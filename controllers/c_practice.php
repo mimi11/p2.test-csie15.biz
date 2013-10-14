@@ -32,22 +32,46 @@ class practice_controller {
 
 
         # Our SQL command
-        $q = "INSERT INTO users SET
-    first_name = 'Fish',
-    last_name = 'Bone',
-    email = 'FishBobe@whitehouse.gov'";
+       // $q = "INSERT INTO users SET
+    //first_name = 'Fish',
+    //last_name = 'Bone',
+    //email = '@whitehouse.gov'";
 
 # Run the command
-        echo DB::instance("p2_test-cscie15_biz")->query($q);
+      //  echo DB::instance("p2_test-cscie15_biz")->query($q);
 
 
 
+       $data = Array(
+            'first_name' => 'Sam',
+            'last_name' => 'Seaborn',
+            'email' => 'seaborn@whitehouse.gov');
+
+
+      //  Insert requires 2 params
+        //1) The table to insert to
+       // 2) An array of data to enter where key = field name and value = field data
+
+       // The insert method returns the id of the row that was created
+
+        $user_id = DB::instance("p2_test-cscie15_biz")->insert('users', $data);
+
+        echo 'Inserted a new row; resulting id:'.$user_id;
 
 
 
+ /*       $_POST = DB::instance("p2_test-cscie15_biz")->sanitize($_POST);
+
+        $q = "SELECT token
+    FROM users
+    WHERE email = '".$_POST['email']."'
+    AND password = '".$_POST['password']."'";
+
+        $token = DB::instance("p2_test-cscie15_biz")->select_field($q);
+        echo 'Inserted a new row; resulting id:'.$user_id;*/
 
     }
 
 }
 
-?>
+

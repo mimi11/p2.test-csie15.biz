@@ -11,8 +11,39 @@ class users_controller extends base_controller {
     }
 
     public function signup() {
-        echo "This is the signup page";
+
+            # Setup view
+            $this->template->content = View::instance('v_users_signup');
+            $this->template->title   = "Sign Up";
+
+            # Render template
+            echo $this->template;
+
     }
+
+        public function p_signup() {
+
+            # Dump out the results of POST to see what the form submitted
+            echo '<pre>';
+            print_r($_POST);
+            echo '</pre>';
+
+            # Insert this user into the database
+            $user_id = DB::instance("p2_test-cscie15_biz")->insert('users', $_POST);
+
+
+            # More data we want stored with the user
+            $_POST['created']  = Time::now();
+            $_POST['modified'] = Time::now();
+
+
+            # For now, just confirm they've signed up -
+            # You should eventually make a proper View for this
+            echo 'You\'re signed up'." ".$user_id;
+
+        }
+
+
 
     public function login() {
         echo "This is the login page";
