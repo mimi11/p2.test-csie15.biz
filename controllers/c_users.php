@@ -26,22 +26,25 @@ class users_controller extends base_controller {
     
     
     # set up the view
-    
-      $this->template->content =View::instance(‘v_users_profile’);
-      
-    # pass the data for the view
-     $this->template->content->user_name = $user_name;
-      
-    
-    echo $this ->$template;
+
+
+
+        $this->template->content = View::instance('v_users_profile');
+
+    /* $title is another variable used in _v_template to set the <title> of the page
+    $this->template->title = "Profile";*/
+
+    # Pass information to the view fragment     (pass the data for the view)
+    $this->template->content->user_name = $user_name;
+
+    # Render View
+    echo $this->template;
 
         if($user_name == NULL) {
-        
-        $view = View::instance(‘v_users_profile’);
+
+        $view = View::instance('v_users_profile');
         $view->user_name =$user_name;
 
-
-        echo $view;
     }
 }
 } # end of the class
