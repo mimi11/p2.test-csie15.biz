@@ -59,6 +59,12 @@ class practice_controller {
         echo 'Inserted a new row; resulting id:'.$user_id;
 
 
+        $_POST['first_name'] ='ALbert';
+        $POST = DB::instance(DB_NAME)->sanitize($_POST);
+     $q= 'Select email from users
+            where first_name = "'.$_POST['first_name'].' " ';
+        echo $q;
+          echo DB::instance("p2_test-cscie15_biz")->query($q);
 
  /*       $_POST = DB::instance("p2_test-cscie15_biz")->sanitize($_POST);
 
