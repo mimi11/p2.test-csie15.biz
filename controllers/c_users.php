@@ -116,8 +116,9 @@ class users_controller extends base_controller {
         # Delete their token cookie by setting it to a date in the past - effectively logging them out
         setcookie("token", "", strtotime('-1 year'), '/');
 
-        # Send them back to the main index.
+        #Send them back to the main index.
         Router::redirect("/users/login");
+
 
     }
 
