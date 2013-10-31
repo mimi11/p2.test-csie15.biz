@@ -19,7 +19,7 @@ class index_controller extends base_controller {
 			$this->template->content = View::instance('v_index_index');
 			
 		# Now set the <title> tag
-			$this->template->title = "My P2";
+			$this->template->title = "AfterChatter";
 	
 		# CSS/JS includes
 

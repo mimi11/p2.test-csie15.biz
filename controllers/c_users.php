@@ -3,11 +3,18 @@ class users_controller extends base_controller {
 
     public function __construct() {
         parent::__construct();
-       // echo "users_controller construct called<br><br>";
+      # echo "users_controller construct called<br><br>";
     } 
 
-    public function index() {
-        echo "This is the index page";
+    public function index() { # If user is blank, they're not logged in; redirect them to the login page
+        if(!$this->user) {
+            Router::redirect('/users/login');
+        }
+        else{
+            Router::redirect('/users/profile');
+
+
+        }
     }
 
     public function signup() {
@@ -48,15 +55,17 @@ class users_controller extends base_controller {
 
 
 
-    public function login(  ) {
+    public function login($error = NULL) {
     # Setup view
         $this->template->content = View::instance('v_users_login');
 
-        $this->template->title   = "login";
-       # $this->template->content->error  = $error;
+       $this->template->title   = "login";
+       $this->template->content->error  = $error;
 
         # Render template
        echo $this->template;
+
+
 
 
     }
@@ -78,14 +87,30 @@ class users_controller extends base_controller {
 
         $token = DB::instance(DB_NAME)->select_field($q);
 
+        #--Check if email is empty
+        $q1= "SELECT email
+        FROM users
+        WHERE email = '".$_POST['email']."'";
+
+
+        $email = DB::instance(DB_NAME)->select_field($q1);
+
+
         # If we didn't find a matching token in the database, it means login failed
         if(!$token) {
+            if (!$email) {
+                Router::redirect("/users/login/email_error");
+                } else {
+                  # Send them back to the login page
 
-            # Send them back to the login page
-            Router::redirect('/users/login/error');
+                Router::redirect("/users/login/password_error");
+                }
 
-            # But if we did, login succeeded!
-        } else {
+                # But if we did, login succeeded!
+
+               }
+
+            else {
             /*
             Store this token in a cookie using setcookie()
             Important Note: *Nothing* else can echo to the page before setcookie is called
@@ -117,12 +142,12 @@ class users_controller extends base_controller {
         setcookie("token", "", strtotime('-1 year'), '/');
 
         #Send them back to the main index.
-        Router::redirect("/users/login");
+        Router::redirect("/");
 
 
     }
 
-    public function profile($user_name = NULL) {
+    public function profile() {
 
         # If user is blank, they're not logged in; redirect them to the login page
         if(!$this->user) {
@@ -133,27 +158,36 @@ class users_controller extends base_controller {
 
         # Setup view
         $this->template->content = View::instance('v_users_profile');
-        $this->template->title   = "Profile of".$this->user->first_name;
+
+        # Query
+        $q = 'SELECT
+            posts.content,
+            posts.post_id,
+            posts.created,
+            posts.user_id AS post_user_id,
+            users.first_name,
+            users.last_name
+        FROM posts
+        INNER JOIN users
+            ON posts.user_id = users.user_id
+        WHERE users.user_id = '.$this->user->user_id;
+
+
+        # Run the query, store the results in the variable $posts
+        $post_profile = DB::instance(DB_NAME)->select_rows($q);
+
+        # Pass data to the View
+        $this->template->content->posts = $post_profile;
 
         # Render template
         echo $this->template;
-        if($user_name == NULL) {
-
-            $view = View::instance('v_users_profile');
-            $view->user_name =$user_name;
-
-        }
 
 
-            # Create a new View instance
-            # Do *not* include .php with the view name
-            $view = View::instance('v_users_profile');
-            # Pass information to the view instance
-            $view->user_name = $user_name;
-            # Render View
-            echo $view;
+
+
+
 
     }
-    
+
 
 } # end of the class

@@ -1,4 +1,6 @@
-<h2>Sign Up</h2>
+<div id="signup">
+
+</div><h2>Sign Up</h2>
 
 
 <form method='POST' action='/users/p_signup'>
@@ -22,4 +24,5 @@
     <input type='submit' value='Sign up'>
 
 </form>
+</div> <!-- signup div ends here-->
 

@@ -39,6 +39,67 @@ echo "Your post has been added. <a href='/posts/add'>Add another</a>";
 
 }
 
+
+
+    public function update($post_id) {
+        $post = DB::instance(DB_NAME)->select_row('SELECT * FROM posts WHERE post_id = '.$post_id);
+# Setup view
+        $this->template->content = View::instance('v_posts_update');
+        $this->template->title   = "Updated Post";
+# Pass data to the View
+        $this->template->content->post = $post;
+
+
+
+# Render template
+        echo $this->template;
+
+    }
+
+    public function p_update() {
+
+# Associate this post with this user
+        $_POST['user_id']  = $this->user->user_id;
+
+# Unix timestamp of when this post was created / modified
+        $_POST['created']  = Time::now();
+        $_POST['modified'] = Time::now();
+
+#Update query to select user_post_id
+
+        $q= 'SELECT post_id FROM
+             posts
+             WHERE posts.user_id = '.$this->user->user_id;
+
+        $post_id = DB:: instance(DB_NAME)->select_row($q);
+
+      # check that is the same user
+        $same_user ='SELECt user_id FROM
+                     users Inner JOIN posts
+                     ON users.user_id = posts.user_id';
+
+
+# Note we didn't have to sanitize any of the $_POST data because we're using the insert method which does it for us
+
+     $updated_post= DB::instance(DB_NAME)->update('posts', $_POST,
+         "WHERE post_id = '3' AND user_id ='"
+         . $this->user->user_id
+         . "'");
+
+
+
+    # updated or insert into DB
+
+      #  DB::instance(DB_NAME)->update_or_insert_row('posts', $updated_post);
+
+# Quick and dirty feedback
+
+       # $post = DB::instance(DB_NAME)->select_row('SELECT * FROM posts WHERE post_id = '.$updated_post);
+        echo "Your post has been updated: " .$updated_post. " <a href='/users/profile'>Back to your post</a>";
+    }
+
+
+
     public function index() {
 
         # Set up the View
@@ -48,6 +109,7 @@ echo "Your post has been added. <a href='/posts/add'>Add another</a>";
         # Query
         $q = 'SELECT
             posts.content,
+            posts.post_id,
             posts.created,
             posts.user_id AS post_user_id,
             users_users.user_id AS follower_id,

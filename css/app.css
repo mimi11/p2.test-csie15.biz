@@ -25,19 +25,23 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 /* style sheet rules begins heres */
 
 
-body { width: 100%; line-height: 1; color: #535F53; background: #fff; font-family: Helvetica, Verdana, Arial, sans-serif; }
+body { width: 100%; line-height: 1; color: #535F53; background: #F0FFFF; font-family: Helvetica, Verdana, Arial, sans-serif;margin-left: 1.2em
+;}
 ol, ul { list-style: none; }
 ol, ul { list-style: none; }
-a { text-decoration: none; border: none; color: #809131; }
+a { text-decoration: none; border: none; color: darkcyan; }
 a:hover { text-decoration: underline; }
+
 
 p { margin-bottom: 30px; width: 100%; }
 
 small { font-size: 0.8em; }
 strong { font-weight: bold; }
 
-#wrapper { width: 960px; margin: 7px auto; background: #fff }
-#signup{background-color: #afeeee;padding:1.3em;color:white;text-align:right;}
+#header {font-family: chalkduster; font-size: 3em; color:#008B8B;}
+
+#wrapper { width: 960px; margin: 7px auto; background: ##66CCFF}
+#signup{background-color: #afeeee;color:white;text-align:right;}
 #signup h1{font-size:3em;text-align:left;color:#809131;font-family:"colona mt";}
 #signup h2{font-size:1em;text-align:left;color:#535F53}
 
@@ -45,7 +49,7 @@ strong { font-weight: bold; }
 
 #Profile h1 { font-size: 0.8em; margin-left: 5px; letter-spacing: 0.078em; margin: 5px; font-weight: normal; text-indent: -1000em; }
 
-#navigation { width: 100%; clear: both; background-color: #c5d37e; overflow: hidden; border-bottom: 2px solid #8b9d35; font-variant: small-caps; font-size: 0.85em; /*font-family: Georgia, "Palatino Linotype", "Times New Roman", serif; */}
+#navigation { width: 100%; clear: both; background-color: #CCFFFF; overflow: hidden; border-bottom: 2px solid #8b9d35; font-variant: normal; font-size: 1.3em; /*font-family: Georgia, "Palatino Linotype", "Times New Roman", serif; */}
 #navigation ul {  }
 #navigation ul li {display: inline; margin: 0; font-variant: small-caps; }
 #navigation ul li a { display: inline-block; padding: 5px 10px 5px; letter-spacing: 0.05em; }
@@ -59,33 +63,16 @@ strong { font-weight: bold; }
 #navigation a:hover {
     /* Rules for navigation items */
 }
+#post_content
 
-/* Rules specific for "you are here" */
-#navigation #iamhere a,
-#navigation #iamhere a:hover {
-    /* Rules for the "you are here" item */
-}
-
-#yui-main{ width: 100%; margin-top: 15px; line-height: 1.5em; background: #fff; overflow: hidden; font-size: 0.75em; letter-spacing: 0.02em; font-family: Verdana, Arial, sans-serif; }
+a { text-decoration: none; border: none; color:grey;}
+font{color:deepskyblue;}
 
 
-#yui-main ul { margin-bottom: 30px; margin-left: 10px; list-style-type: circle; }
-#yui-main ul li { font-size: 0.9em;  margin: 6px; }
-
-
-#rightcolumn { width: 535px; float: left; clear: left; }
-#rightcolumntab { width: 445px; margin-bottom:30px;float: left; clear: left; }
-#leftcolumntab { width: 415px; margin-right: 30px; float: right; clear: right;  }
-#leftcolumn { width: 325px; margin-right: 30px; float: right; clear: right;  }
 
 form, fieldset { width: 100%; }
 fieldset { border: 1px solid #e6e6e6; }
 input, textarea, select { margin: auto 5px; font-family: Verdana, Arial, sans-serif; padding: 2px; font-size: 12px; }
 legend { margin: 20px 10px; padding: 5px 10px; }
 label { display: inline-block; width: 30%; text-align: right; vertical-align: top; margin-top: 3px; }
-
-
-#footer { width: 100%; clear: both; margin: 30px; font-family: Verdana, Arial, sans-serif; }
-#footer ul { width: 100%; border-top: 2px solid #c5d37e; }
-#footer ul li { display: inline; float: left; width: 290px; font-size: 0.7em; text-align: center; vertical-align: top; padding: 15px 0; margin-left: 15px; color: #000; }
 
