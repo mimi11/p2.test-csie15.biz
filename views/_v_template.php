@@ -13,7 +13,7 @@
 	it comes down to a performance thing - so js script let all the content load
 	first, then let the java script -->
 	
-	<?php if(isset($client_files_head)) echo $client_files_head; ?>
+	<script><?php if(isset($client_files_head)) echo $client_files_head; ?></script>
 	
 </head>
 

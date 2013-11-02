@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="55d61252-a19e-416e-bcfc-24d95722036b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/_v_template.php" afterPath="$PROJECT_DIR$/views/_v_template.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/c_index.php" afterPath="$PROJECT_DIR$/controllers/c_index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/c_posts.php" afterPath="$PROJECT_DIR$/controllers/c_posts.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/c_users.php" afterPath="$PROJECT_DIR$/controllers/c_users.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/v_index_index.php" afterPath="$PROJECT_DIR$/views/v_index_index.php" />
     </list>
     <ignored path="p2.test-csie15.biz.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -18,7 +14,7 @@
     <file path="/v_users_login.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1382817880712" ignored="false" />
     <file path="/c_base.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383413197806" ignored="false" />
     <file path="/c_index.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1382201465684" ignored="false" />
-    <file path="/_v_template.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383418109261" ignored="false" />
+    <file path="/_v_template.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383419156301" ignored="false" />
     <file path="/c_posts.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383416432457" ignored="false" />
     <file path="/v_index_index.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383417260945" ignored="false" />
     <file path="/sample-app.css" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1382719621028" ignored="false" />
@@ -69,7 +65,7 @@
       <file leaf-file-name="_v_template.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/_v_template.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="0" selection-start="1833" selection-end="1833" vertical-scroll-proportion="0.95049506">
+            <state line="22" column="0" selection-start="617" selection-end="617" vertical-scroll-proportion="0.5445545">
               <folding />
             </state>
           </provider>
@@ -87,7 +83,7 @@
       <file leaf-file-name="v_index_index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/v_index_index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="5" selection-start="873" selection-end="873" vertical-scroll-proportion="-20.0">
+            <state line="28" column="27" selection-start="783" selection-end="783" vertical-scroll-proportion="-17.5">
               <folding />
             </state>
           </provider>
@@ -556,14 +552,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/v_index_index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="5" selection-start="873" selection-end="873" vertical-scroll-proportion="-20.0">
+        <state line="28" column="27" selection-start="783" selection-end="783" vertical-scroll-proportion="-17.5">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/_v_template.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="0" selection-start="1833" selection-end="1833" vertical-scroll-proportion="0.95049506">
+        <state line="22" column="0" selection-start="617" selection-end="617" vertical-scroll-proportion="0.5445545">
           <folding />
         </state>
       </provider>
