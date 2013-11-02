@@ -45,8 +45,6 @@
             <a href='/users/signup'>Sign up</a>
             <a href='/users/login'>Log in</a>
 
-
-
         <?php endif; ?>
 
     </div><!-- End of Navigation here -->
@@ -57,7 +55,7 @@
     <?php if(isset($content)) echo $content; ?>
 
 
-<!-- if -->
+    <!-- if -->
 	<?php if(isset($client_files_body)) echo $client_files_body; ?>
 
 
@@ -65,19 +63,14 @@
 
     <div id="footer" class="gtfooter" >
 
-
         <ul>
 
-            <li>&bull; Last updated on: October 26,2013</li>
+            <li>&bull; Last updated on: November 2,2013</li>
 
             <li>&copy; 2013 AfterChatter.com All rights reserved.</li>
-            <li class="bottomnav"> <a id="home" title="Go to Home" class="Home page" href="/">Home </a> | <a id="Contact" title="Contact Us" class="ctus" href="~/../nav6.shtml"> Contact Us </a>|<a id="terms" title="Review Terms " class="tandc" href="~/../Terms.shtml">Terms and conditions</a></li>
+            <li class="bottomnav"> <a id="home" title="Go to Home" class="Home page" href="/">Home </a> | <a id="Profile" title="Your Chatters" class="ctus" href="/users/profile"> Your Profile </a></li>
 
         </ul>
-
-
-
-
 
 
     </div> <!--close footer-->

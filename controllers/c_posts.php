@@ -3,7 +3,7 @@
 Name: Carine Melhorn
 Student HuId: 50713350 / extension school id @00070108
 Project Name: p2.test-csie15.biz
-github username: mimi11
+github url: https://github.com/mimi11/p2.test-csie15.biz
    -------------------------------------------------------------------------------------------------*/
 class posts_controller extends base_controller
 {
@@ -69,7 +69,7 @@ class posts_controller extends base_controller
     public function p_update()
     {
         # an object loaded by the framework coming directly from the form.
-        $post_id = sanitize_id($_POST['post_id']);
+        $post_id = $this->sanitize_id($_POST['post_id']);
         $post = array();
 
 
@@ -152,39 +152,7 @@ class posts_controller extends base_controller
 
     }
 
-    public function p_index($post_id = '')
-    {
 
-        #$post = DB::instance(DB_NAME)->select_row('SELECT post_id FROM posts WHERE user_id = '.$this->user->user_id);
-        # Associate this post with this user
-        $_POST['user_id'] = $this->user->user_id;
-
-        # Unix timestamp of when this post was modified
-        $_POST['modified'] = Time::now();
-
-        #Update query to select user_post_id
-
-
-        # Note we didn't have to sanitize any of the $_POST data because we're using the insert method which does it for us
-
-        DB::instance(DB_NAME)->update('posts', $_POST,
-            "WHERE post_id = '"
-            . $post_id
-            . "' AND user_id ='"
-            . $this->user->user_id
-            . "'");
-
-
-        # updated or insert into DB
-
-        #  DB::instance(DB_NAME)->update_or_insert_row('posts', $updated_post);
-
-# Quick and dirty feedback
-
-        # $post = DB::instance(DB_NAME)->select_row('SELECT * FROM posts WHERE post_id = '.$updated_post);
-        echo "Your post has been updated: " . $post_id . " <a href='/users/profile'>Back to your post</a>";
-
-    }
 
 
     public function users()
