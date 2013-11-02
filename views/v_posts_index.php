@@ -13,6 +13,8 @@
         <br>
 
        <div id="post_info">
+
+
         <time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
             <?=Time::display($post['created'])?>
         </time>
@@ -22,7 +24,7 @@
 
        <div= "post_content">
         <p><br><?=$post['content']?></p>
-        <a href='/posts/Update/<?=$post['post_id']?>'>Update</a>
+        <a href='/posts/p_update/<?=$post['post_id']?>'>Update</a>
        </div>
     </article>
 

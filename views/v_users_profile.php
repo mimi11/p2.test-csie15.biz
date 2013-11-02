@@ -20,14 +20,15 @@
 <br>
 
 
-<p> Previous Chatters</p>
+<p><a href='/users/profile/<?=$post_profile['post_id']?>'>Edit Profile</a></p>
 
 
 <?php foreach($posts as $post_profile): ?>
 
     <article>
 
-        <div id="user_id">
+        <div class="profile_chatter">
+            <div id="users_id"
             <h1><?=$post_profile['first_name']?> <?=$post_profile['last_name']?>&nbsp</h1>
         </div>
 
@@ -45,8 +46,10 @@
         <div= "post_content">
         <p><br><?=$post_profile['content']?></p>
         <a href='/posts/Update/<?=$post_profile['post_id']?>'>Update</a>
+        <a href='/posts/delete/<?=$post_profile['post_id']?>'>Delete</a>
         <br>
         </div>
+       </div> <!--end of class profile chattr-->
     </article>
     <br>
     <br>

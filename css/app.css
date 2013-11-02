@@ -25,7 +25,8 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 /* style sheet rules begins heres */
 
 
-body { width: 100%; line-height: 1; color: #535F53; background: #F0FFFF; font-family: Helvetica, Verdana, Arial, sans-serif;margin-left: 1.2em
+body { width: 100%; line-height: 1; color: #535F53; background: #F0FFFF;font-family: Helvetica, Verdana, Arial, sans-serif;margin: 2em;
+
 ;}
 ol, ul { list-style: none; }
 ol, ul { list-style: none; }
@@ -33,7 +34,7 @@ a { text-decoration: none; border: none; color: darkcyan; }
 a:hover { text-decoration: underline; }
 
 
-p { margin-bottom: 30px; width: 100%; }
+/*p { margin-bottom: 30px; width: 100%; }*/
 
 small { font-size: 0.8em; }
 strong { font-weight: bold; }
@@ -63,10 +64,13 @@ strong { font-weight: bold; }
 #navigation a:hover {
     /* Rules for navigation items */
 }
-#post_content
-
-a { text-decoration: none; border: none; color:grey;}
-font{color:deepskyblue;}
+#post_content a { text-decoration: none; border: none; color:grey;}
+#post_content font{color:deepskyblue;}
+.profile_chatter{
+    border: medium solid darkcyan;
+    padding: 2em;
+    margin-bottom: 2em;
+}
 
 
 

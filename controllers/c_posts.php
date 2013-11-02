@@ -1,54 +1,64 @@
 <?php
-class posts_controller extends base_controller {
+/*-------------------------------------------------------------------------------------------------
+Name: Carine Melhorn
+Student HuId: 50713350 / extension school id @00070108
+Project Name: p2.test-csie15.biz
+github username: mimi11
+   -------------------------------------------------------------------------------------------------*/
+class posts_controller extends base_controller
+{
 
-public function __construct() {
-parent::__construct();
+    public function __construct()
+    {
+        parent::__construct();
+
 
 # Make sure user is logged in if they want to use anything in this controller
-if(!$this->user) {
-die("Members only. <a href='/users/login'>Login</a>");
-}
-}
+        if (!$this->user) {
+            die("Members only. <a href='/users/login'>Login</a>");
+        }
+    }
 
-public function add() {
+    public function add()
+    {
 
 # Setup view
-$this->template->content = View::instance('v_posts_add');
-$this->template->title   = "New Post";
+        $this->template->content = View::instance('v_posts_add');
+        $this->template->title = "New Post";
 
 # Render template
-echo $this->template;
+        echo $this->template;
 
-}
+    }
 
-public function p_add() {
+    public function p_add()
+    {
 
 # Associate this post with this user
-$_POST['user_id']  = $this->user->user_id;
+        $_POST['user_id'] = $this->user->user_id;
 
 # Unix timestamp of when this post was created / modified
-$_POST['created']  = Time::now();
-$_POST['modified'] = Time::now();
+        $_POST['created'] = Time::now();
+        $_POST['modified'] = Time::now();
 
 # Insert
 # Note we didn't have to sanitize any of the $_POST data because we're using the insert method which does it for us
-DB::instance(DB_NAME)->insert('posts', $_POST);
+        DB::instance(DB_NAME)->insert('posts', $_POST);
 
 # Quick and dirty feedback
-echo "Your post has been added. <a href='/posts/add'>Add another</a>";
+        echo "Your post has been added. <a href='/posts/add'>Add another</a>";
 
-}
+    }
 
 
-
-    public function update($post_id) {
-        $post = DB::instance(DB_NAME)->select_row('SELECT * FROM posts WHERE post_id = '.$post_id);
+    public function update($post_id)
+    {
+        $post = DB::instance(DB_NAME)->select_row('SELECT * FROM posts WHERE post_id = ' . $post_id);
 # Setup view
         $this->template->content = View::instance('v_posts_update');
-        $this->template->title   = "Updated Post";
+        $this->template->title = "View/Edit Post";
 # Pass data to the View
         $this->template->content->post = $post;
-
 
 
 # Render template
@@ -56,55 +66,63 @@ echo "Your post has been added. <a href='/posts/add'>Add another</a>";
 
     }
 
-    public function p_update() {
-
-# Associate this post with this user
-        $_POST['user_id']  = $this->user->user_id;
-
-# Unix timestamp of when this post was created / modified
-        $_POST['created']  = Time::now();
-        $_POST['modified'] = Time::now();
-
-#Update query to select user_post_id
-
-        $q= 'SELECT post_id FROM
-             posts
-             WHERE posts.user_id = '.$this->user->user_id;
-
-        $post_id = DB:: instance(DB_NAME)->select_row($q);
-
-      # check that is the same user
-        $same_user ='SELECt user_id FROM
-                     users Inner JOIN posts
-                     ON users.user_id = posts.user_id';
+    public function p_update()
+    {
+        # an object loaded by the framework coming directly from the form.
+        $post_id = sanitize_id($_POST['post_id']);
+        $post = array();
 
 
-# Note we didn't have to sanitize any of the $_POST data because we're using the insert method which does it for us
+        # Unix timestamp of when this post was modified
+        $post['modified'] = Time::now();
 
-     $updated_post= DB::instance(DB_NAME)->update('posts', $_POST,
-         "WHERE post_id = '3' AND user_id ='"
-         . $this->user->user_id
-         . "'");
+        # This variable will update the content from the user update
+        $post['content'] = $_POST['content'];
+
+        #storing into user object $post and passing back to the DB
 
 
 
-    # updated or insert into DB
+        $number_of_rows_updated = DB::instance(DB_NAME)->update('posts', $post,
+            "WHERE post_id = '"
+            . $post_id
+            . "' AND user_id ='"
+            . $this->user->user_id
+            . "'");
 
-      #  DB::instance(DB_NAME)->update_or_insert_row('posts', $updated_post);
+        if ($number_of_rows_updated == 1) {
+            echo "Your post has been updated: " . $post_id . " <a href='/users/profile'>Back to your post</a>";
+        } # Means there is something went wrong - e.g parameter is wrong since update() should only update a single row.
+        else {
+            echo "Unable to update your post <a href='/users/profile'>Back to your post</a>";
+        }
 
-# Quick and dirty feedback
 
-       # $post = DB::instance(DB_NAME)->select_row('SELECT * FROM posts WHERE post_id = '.$updated_post);
-        echo "Your post has been updated: " .$updated_post. " <a href='/users/profile'>Back to your post</a>";
+    }
+    public function delete($post_id){
+        $post_id = $this->sanitize_id($post_id);
+        $number_of_rows_deleted=DB::instance(DB_NAME)->delete('posts',  "WHERE post_id = '"
+            . $post_id
+            . "' AND user_id ='"
+            . $this->user->user_id
+            . "'");
+
+        if ($number_of_rows_deleted == 1) {
+            echo "Your post has been deleted: " . $post_id . " <a href='/users/profile'>Back to your post</a>";
+        } # Means there is something went wrong - e.g parameter is wrong since update() should only update a single row.
+        else {
+            echo "Unable to delete your post <a href='/users/profile'>Back to your post</a>";
+        }
+
+
     }
 
-
-
-    public function index() {
+    public function index()
+    {
 
         # Set up the View
         $this->template->content = View::instance('v_posts_index');
-        $this->template->title   = "All Posts";
+        $this->template->title = "All Posts";
 
         # Query
         $q = 'SELECT
@@ -120,7 +138,7 @@ echo "Your post has been added. <a href='/posts/add'>Add another</a>";
             ON posts.user_id = users_users.user_id_followed
         INNER JOIN users
             ON posts.user_id = users.user_id
-        WHERE users_users.user_id = '.$this->user->user_id;
+        WHERE users_users.user_id = ' . $this->user->user_id;
 
         # Run the query, store the results in the variable $posts
         $posts = DB::instance(DB_NAME)->select_rows($q);
@@ -132,14 +150,49 @@ echo "Your post has been added. <a href='/posts/add'>Add another</a>";
         echo $this->template;
 
 
+    }
 
+    public function p_index($post_id = '')
+    {
+
+        #$post = DB::instance(DB_NAME)->select_row('SELECT post_id FROM posts WHERE user_id = '.$this->user->user_id);
+        # Associate this post with this user
+        $_POST['user_id'] = $this->user->user_id;
+
+        # Unix timestamp of when this post was modified
+        $_POST['modified'] = Time::now();
+
+        #Update query to select user_post_id
+
+
+        # Note we didn't have to sanitize any of the $_POST data because we're using the insert method which does it for us
+
+        DB::instance(DB_NAME)->update('posts', $_POST,
+            "WHERE post_id = '"
+            . $post_id
+            . "' AND user_id ='"
+            . $this->user->user_id
+            . "'");
+
+
+        # updated or insert into DB
+
+        #  DB::instance(DB_NAME)->update_or_insert_row('posts', $updated_post);
+
+# Quick and dirty feedback
+
+        # $post = DB::instance(DB_NAME)->select_row('SELECT * FROM posts WHERE post_id = '.$updated_post);
+        echo "Your post has been updated: " . $post_id . " <a href='/users/profile'>Back to your post</a>";
 
     }
-    public function users() {
+
+
+    public function users()
+    {
 
         # Set up the View
         $this->template->content = View::instance("v_posts_users");
-        $this->template->title   = "Users";
+        $this->template->title = "Users";
 
         # Build the query to get all the users
         $q = "SELECT *
@@ -153,7 +206,7 @@ echo "Your post has been added. <a href='/posts/add'>Add another</a>";
         # I.e. who are they following
         $q = "SELECT *
         FROM users_users
-        WHERE user_id = ".$this->user->user_id;
+        WHERE user_id = " . $this->user->user_id;
 
         # Execute this query with the select_array method
         # select_array will return our results in an array and use the "users_id_followed" field as the index.
@@ -162,14 +215,15 @@ echo "Your post has been added. <a href='/posts/add'>Add another</a>";
         $connections = DB::instance(DB_NAME)->select_array($q, 'user_id_followed');
 
         # Pass data (users and connections) to the view
-        $this->template->content->users       = $users;
+        $this->template->content->users = $users;
         $this->template->content->connections = $connections;
 
         # Render the view
         echo $this->template;
     }
 
-    public function follow($user_id_followed) {
+    public function follow($user_id_followed)
+    {
 
         # Prepare the data array to be inserted
         $data = Array(
@@ -186,10 +240,11 @@ echo "Your post has been added. <a href='/posts/add'>Add another</a>";
 
     }
 
-    public function unfollow($user_id_followed) {
+    public function unfollow($user_id_followed)
+    {
 
         # Delete this connection
-        $where_condition = 'WHERE user_id = '.$this->user->user_id.' AND user_id_followed = '.$user_id_followed;
+        $where_condition = 'WHERE user_id = ' . $this->user->user_id . ' AND user_id_followed = ' . $user_id_followed;
         DB::instance(DB_NAME)->delete('users_users', $where_condition);
 
         # Send them back
