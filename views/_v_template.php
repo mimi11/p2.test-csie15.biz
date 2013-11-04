@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title><?php if(isset($title)) echo $title; ?></title>
+    <head>
+    	<title><?php if(isset($title)) echo $title; ?></title>
 
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="/css/app.css" type ="text/css">
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+         <link rel="stylesheet" href="/css/app.css" type ="text/css">
 
-	<!-- Controller Specific JS/CSS -->
+	    <!-- Controller Specific JS/CSS -->
 
-	<!-- tracking scripts
-	you may have java script has to be there before the java code execute
-	it comes down to a performance thing - so js script let all the content load
-	first, then let the java script -->
+	    <!-- tracking scripts
+	    you may have java script has to be there before the java code execute
+	    it comes down to a performance thing - so js script let all the content load
+	    first, then let the java script -->
+
+        <!--currently line 17 is generating an error code in w3c validation - it's encoding the php cod below as a script attribute
+        and attribute value must not be empty an assigned value-->
+	    <?php if(isset($client_files_head)) echo $client_files_head; ?>
 	
-	<script><?php if(isset($client_files_head)) echo $client_files_head; ?></script>
-	
-</head>
+    </head>
 
-<body>
+  <body>
     <div id="header">
         <?=APP_NAME?>
 
@@ -25,8 +27,6 @@
 
 
     <div id='navigation'>
-
-
 
         <a href='/'>Home</a>
 
@@ -58,26 +58,19 @@
     <!-- if -->
 	<?php if(isset($client_files_body)) echo $client_files_body; ?>
 
-
-
-
-    <div id="footer" class="gtfooter" >
+    <div id="footer"  >
 
         <ul>
 
             <li>&bull; Last updated on: November 2,2013</li>
 
             <li>&copy; 2013 AfterChatter.com All rights reserved.</li>
-            <li class="bottomnav"> <a id="home" title="Go to Home" class="Home page" href="/">Home </a> | <a id="Profile" title="Your Chatters" class="ctus" href="/users/profile"> Your Profile </a></li>
+            <li <a id="Profile" title="Go to Home" class="Home page" href='/'>Home</a> | <a id="Profile" title="Your Chatters" href="/users/profile"> Your Profile </a></li>
 
         </ul>
 
 
     </div> <!--close footer-->
 
-
-
-
-
-</body>
+  </body>
 </html>

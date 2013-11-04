@@ -95,6 +95,7 @@ class posts_controller extends base_controller
         } # Means there is something went wrong - e.g parameter is wrong since update() should only update a single row.
         else {
             echo "Unable to update your post <a href='/users/profile'>Back to your post</a>";
+
         }
 
 

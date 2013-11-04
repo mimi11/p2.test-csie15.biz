@@ -47,7 +47,52 @@ class Image {
        $thumb = imagecreatetruecolor($width, $height);
        imagecopyresampled($thumb, $this->image, 0, 0, 0, 0, $width, $height, $this->width, $this->height);
        $this->image = $thumb;
+
+
+
+
    }
+    public function save_image($save_path, $image_quality="100") {
+
+        # Get extension
+        $extension = strrchr($save_path, '.');
+        $extension = strtolower($extension);
+
+        switch($extension) {
+            case '.jpg':
+            case '.jpeg':
+                if (imagetypes() & IMG_JPG) {
+                    imagejpeg($this->image_resized, $save_path, $image_quality);
+                }
+                break;
+
+            case '.gif':
+                if (imagetypes() & IMG_GIF) {
+                    imagegif($this->image_resized, $save_path);
+                }
+                break;
+
+            case '.png':
+                # Scale quality from 0-100 to 0-9
+                $scaleQuality = round(($image_quality/100) * 9);
+
+                # Invert quality setting as 0 is best, not 9
+                $invertScaleQuality = 9 - $scaleQuality;
+
+                if (imagetypes() & IMG_PNG) {
+                    imagepng($this->image_resized, $save_path, $invertScaleQuality);
+                }
+                break;
+
+            // ... etc
+
+            default:
+                # No extension - No save.
+                break;
+        }
+
+        imagedestroy($this->image_resized);
+    }
 
 } # eoc
 

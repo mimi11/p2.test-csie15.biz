@@ -48,7 +48,7 @@ strong { font-weight: bold; }
 
 #Profile { width: 100%; height: 98px; clear: both; font-family: Georgia, "Palatino Linotype", "Times New Roman", serif; color: #683a94; float: left; background: transparent; }
 
-#Profile h1 { font-size: 0.8em; margin-left: 5px; letter-spacing: 0.078em; margin: 5px; font-weight: normal; text-indent: -1000em; }
+#Profile h1 { font-size: 0.8em;; letter-spacing: 0.078em; margin: 5px; font-weight: normal; text-indent: -1000em; }
 
 #navigation { width: 100%; clear: both; background-color: #CCFFFF; overflow: hidden; border-bottom: 2px solid #8b9d35; font-variant: normal; font-size: 1.3em; /*font-family: Georgia, "Palatino Linotype", "Times New Roman", serif; */}
 #navigation ul {  }
@@ -71,7 +71,15 @@ strong { font-weight: bold; }
     padding: 2em;
     margin-bottom: 2em;
 }
+#bio_profile{
+    border: medium solid darkcyan;
+    padding: 2em;
+    margin-bottom: 2em;
+}
+#bio{ background: green;
 
+
+}
 
 
 form, fieldset { width: 100%; }

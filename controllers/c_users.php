@@ -44,6 +44,8 @@ class users_controller extends base_controller
         $_POST['created'] = Time::now();
         $_POST['modified'] = Time::now();
 
+
+
         # Encrypt the password
         $_POST['password'] = sha1(PASSWORD_SALT . $_POST['password']);
 
@@ -52,6 +54,12 @@ class users_controller extends base_controller
 
         # Insert this user into the database
         DB::instance(DB_NAME)->insert("users", $_POST);
+        #$query db for user id to store additional info during sing-up
+
+
+        #upload placeholder picture for each new user -(TO DO )
+        #Upload::upload($_FILES,"/uploads/avatars/example.gif", array("JPG", "JPEG", "jpg", "jpeg", "gif", "GIF", "png", "PNG"), $this->user->user_id);
+
         Router::redirect('/users/login');
 
 
@@ -114,6 +122,8 @@ class users_controller extends base_controller
             # But if we did, login succeeded!
 
         } else {
+
+
             /*
             Store this token in a cookie using setcookie()
             Important Note: *Nothing* else can echo to the page before setcookie is called
@@ -124,6 +134,8 @@ class users_controller extends base_controller
             param 4 = the path of the cooke (a single forward slash sets it for the entire domain)
             */
             setcookie("token", $token, strtotime('+2 weeks'), '/');
+
+
             # Send them to the main page - or whever you want them to go
             Router::redirect('/');
 
@@ -151,8 +163,65 @@ class users_controller extends base_controller
 
     }
 
+    public function bio(){
+        $profile_id= DB::instance(DB_NAME)->select_row('SELECT * FROM users WHERE user_id = ' . $this->user->user_id);
+
+
+        # Setup view
+        $this->template->content = View::instance('v_users_bio');
+
+        #select all from user-id from db
+
+
+        $this->template->title = "View/Edit Bio Info";
+
+        #pass data to the view
+        $this->template->content->post = $profile_id;
+
+        # Render template
+        echo $this->template;
+
+
+    }
+    public function p_bio(){
+
+        $bio = array();
+
+
+        # Unix timestamp of when this post was modified
+        $bio['modified'] = Time::now();
+
+        # This variable will update the content from the user update
+        $bio['first_name'] = $_POST['first_name'];
+
+        #storing into user object $post and passing back to the DB
+
+
+
+        # Update this user into the database
+
+        $number_of_rows_updated = DB::instance(DB_NAME)->update('users', $bio,
+            "WHERE user_id = '"
+            . $this->user->user_id
+            . "'");
+
+
+        if ($number_of_rows_updated == 1) {
+            echo "Your bio  has been updated <a href='/users/profile'>Back to your post</a>";
+        } # Means there is something went wrong - e.g parameter is wrong since update() should only update a single row.
+        else {
+            echo "Unable to update your bio <a href='/users/p_bio'>Back to your post</a>";
+        }
+
+
+    }
+
+
+
     public function profile()
     {
+        $image = DB::instance(DB_NAME)->select_row('SELECT avatar FROM users WHERE user_id = ' . $this->user->user_id);
+
 
         # If user is blank, they're not logged in; redirect them to the login page
         if (!$this->user) {
@@ -163,6 +232,9 @@ class users_controller extends base_controller
 
         # Setup view
         $this->template->content = View::instance('v_users_profile');
+        $this->template->content->avatar = $image;
+
+
 
         # Query
         $q = 'SELECT
@@ -171,7 +243,8 @@ class users_controller extends base_controller
             posts.created,
             posts.user_id AS post_user_id,
             users.first_name,
-            users.last_name
+            users.last_name,
+            users.user_id
         FROM posts
         INNER JOIN users
             ON posts.user_id = users.user_id
@@ -184,11 +257,47 @@ class users_controller extends base_controller
         # Pass data to the View
         $this->template->content->posts = $post_profile;
 
+
         # Render template
         echo $this->template;
 
 
     }
+
+    public function bio_update(){
+        // if user specified a new image file, upload it
+        if ($_FILES['file']['error'] == 0)
+        {
+            //upload an image
+            $image = Upload::upload($_FILES, "/uploads/avatars/", array("JPG", "JPEG", "jpg", "jpeg", "gif", "GIF", "png", "PNG"), $this->user->user_id);
+
+            if($image == 'Invalid file type.') {
+                // return an error
+              #  Router::redirect("/users/profile/error");
+               echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
+            }
+            else {
+                // process the upload
+                $data = Array("image" => $image);
+                DB::instance(DB_NAME)->update("users", $data, "WHERE user_id = ".$this->user->user_id);
+
+                // resize the image
+                $imgObj = new Image($_SERVER["DOCUMENT_ROOT"]. '/uploads/avatars/' . $image);
+                $imgObj->resize(100,100, "crop");
+                $imgObj->save_image($_SERVER["DOCUMENT_ROOT"]. '/uploads/avatars/' . $image);
+            }
+        }
+        else
+        {
+            // return an error
+            Router::redirect("/users/profile/error");
+        }
+
+        // Redirect back to the profile page
+        router::redirect('/users/profile');
+    }
+
+
 
 
 } # end of the class
