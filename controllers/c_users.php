@@ -1,7 +1,6 @@
 <?php
 /*-------------------------------------------------------------------------------------------------
 Name: Carine Melhorn
-Student HuId: 50713350 / extension school id @00070108
 Project Name: p2.test-csie15.biz
 github username: mimi11
    -------------------------------------------------------------------------------------------------*/
@@ -17,6 +16,7 @@ class users_controller extends base_controller
     public function index()
     { # If user is blank, they're not logged in; redirect them to the login page
         if (!$this->user) {
+
             Router::redirect('/users/login');
         } else {
             Router::redirect('/users/profile');
@@ -25,12 +25,17 @@ class users_controller extends base_controller
         }
     }
 
-    public function signup()
+    public function signup($error = NULL)
     {
 
         # Setup view
         $this->template->content = View::instance('v_users_signup');
         $this->template->title = "Sign Up";
+
+
+        #Pass data to the view
+        $this->template->content->error = $error;
+
 
         # Render template
         echo $this->template;
@@ -40,7 +45,9 @@ class users_controller extends base_controller
     public function p_signup()
     {
 
-        # More data we want stored with the user
+
+
+         # More data we want stored with the user
         $_POST['created'] = Time::now();
         $_POST['modified'] = Time::now();
 
@@ -52,21 +59,37 @@ class users_controller extends base_controller
         # Create an encrypted token via their email address and a random string
         $_POST['token'] = sha1(TOKEN_SALT . $_POST['email'] . Utils::generate_random_string());
 
-        # Insert this user into the database
-        DB::instance(DB_NAME)->insert("users", $_POST);
-        #$query db for user id to store additional info during sing-up
+
+        # Confirm if they have empty field
 
 
-        #upload placeholder picture for each new user -(TO DO )
-        #Upload::upload($_FILES,"/uploads/avatars/example.gif", array("JPG", "JPEG", "jpg", "jpeg", "gif", "GIF", "png", "PNG"), $this->user->user_id);
-
-        Router::redirect('/users/login');
+        # Confirm if duplicate email
+        $email = $_POST['email'];
 
 
+        # Confirming if they have a duplicate email
+            if ($this->userObj->confirm_unique_email($email) == False) {
+                Router::redirect("/users/signup/duplicate_email_error");
+
+            } else {
+                     # Send them back to the login page
+                Router::redirect("/users/signup/blank_fields_error");
+            }
 
 
-    }
+        # But if no errors exist - sign-up succeeded!Insert this user into the database
+        $new_user = DB::instance(DB_NAME)->insert("users", $_POST);
 
+
+        # source code posted by Susan Buck on piazza Forum to log in users after sign-up)
+            if($new_user) {
+                setcookie('token',$_POST['token'], strtotime('+1 year'), '/');
+            }
+
+            # Send them to their profile
+            Router::redirect('/users/profile');
+
+        }
 
     public function login($error = NULL)
     {
@@ -84,29 +107,39 @@ class users_controller extends base_controller
 
     public function p_login()
     {
-        # Sanitize the user entered data to prevent any funny-business (re: SQL Injection Attacks)
-        $_POST = DB::instance(DB_NAME)->sanitize($_POST);
+        # check if user is already logged in, if yes redirect to profile
+        if ($this->user) {
 
-        # Hash submitted password so we can compare it against one in the db
-        $_POST['password'] = sha1(PASSWORD_SALT . $_POST['password']);
+            echo "You are currently logged in as"."$this->user->first_name";
 
-        # Search the db for this email and password
-        # Retrieve the token if it's available
 
-        $q = "SELECT token
+        }else{
+            # Sanitize the user entered data to prevent any funny-business (re: SQL Injection Attacks)
+            $_POST = DB::instance(DB_NAME)->sanitize($_POST);
+
+            # Hash submitted password so we can compare it against one in the db
+            $_POST['password'] = sha1(PASSWORD_SALT . $_POST['password']);
+
+            # Search the db for this email and password
+            # Retrieve the token if it's available
+
+            $q = "SELECT token
         FROM users
         WHERE email = '" . $_POST['email'] . "'
         AND password = '" . $_POST['password'] . "'";
 
-        $token = DB::instance(DB_NAME)->select_field($q);
+            $token = DB::instance(DB_NAME)->select_field($q);
 
-        #--Check if email is empty
-        $q1 = "SELECT email
+            #--Check if email is empty
+            $q1 = "SELECT email
         FROM users
         WHERE email = '" . $_POST['email'] . "'";
 
 
-        $email = DB::instance(DB_NAME)->select_field($q1);
+            $email = DB::instance(DB_NAME)->select_field($q1);
+
+
+        }
 
 
         # If we didn't find a matching token in the database, it means login failed

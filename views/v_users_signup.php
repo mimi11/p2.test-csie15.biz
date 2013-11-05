@@ -15,14 +15,33 @@
 
     Email<br>
     <input type='text' name='email'>
+
     <br><br>
 
     Password<br>
     <input type='password' name='password'>
     <br><br>
 
-    <input type='submit' value='Sign up'>
+
+    <?php if($error == 'duplicate_email_error'): ?>
+        <div class='error'style="color: #090; line-height: 1.2">
+            Sign up failed. E-Mail address already registered.
+        </div>
+        <br>
+    <?php endif; ?>
+
+
+    <?php if($error == 'blank_fields_error'): ?>
+        <div class='error'style="color: #090; line-height: 1.2">
+            Sign up failed. All fields must have a value
+        </div>
+        <br>
+
+    <?php endif; ?>
+
+        <input type='submit' value='Sign up'>
 
 </form>
-</div> <!-- signup div ends here-->
 
+
+</div> <!-- signup div ends here-->

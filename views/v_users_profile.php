@@ -1,76 +1,58 @@
-<h1>Welcome  <?=$user->first_name?> <?=$user->last_name?> </h1>
-<!--<div class="avatar" style="background: url('<?=$user->avatar; ?>') center center no-repeat;"></div>-->
-<div class="avatar" >
-    <img src="/uploads/avatars/example.gif">
+<?php if ($user): ?>
 
-</div>
+    <!--<div class="avatar" style="background: url('<?=$user->avatar; ?>') center center no-repeat;"></div>-->
+    <div id ="wrapper">
+        <div class="avatar" >
+            <img src="/uploads/avatars/example.gif">
+        </div>
 
+    <div id="profile_links"
+        <br>
+        <a href='/users/bio/''>Edit Bio Info Here</a> |  <a href='/posts/add'> Add a new Chatter Here</a>
+        <br>
+        <br>
 
-<br>
-
-<a href='/users/bio/''>Edit Bio Info Here</a> |  <a href='/posts/add'> Add a new Chatter Here</a>
-<br>
-
-
-<!--<div id="Profile"
- <li>
-        <ul>
-            <li class="fname"> <h3>First Name: <?=$user->first_name?></h3></li>
-            <li class="Lname"><h3>Last Name:<?=$user->last_name?>
-
-        </ul>
-     </li>
-</div> profile-->
-<br>
-
-
-
-<br>
-<br>
-
-
-All My Chatters: &nbsp;
-
-<br>
-<br>
+        <p>All My Chatters: &nbsp;<a href='/users/profile/'> See Below</a> </p>
+        <br>
+        <br>
+    </div> <!--End of profile links div-->
 
 <?php foreach($posts as $post_profile): ?>
+      <div id="profile"><!--start of div profile-->
 
-    <article>
+        <article>
 
-        <div class="profile_chatter">
-            <div id="users_id"
-                <h1><?=$post_profile['first_name']?> <?=$post_profile['last_name']?>&nbsp</h1>
-            </div>
+                <div id="users_id"
+                   <h1><?=$post_profile['first_name']?> <?=$post_profile['last_name']?>&nbsp</h1>
+                </div><!--end of div users_id-->
 
-            <div id="post">
-                <h2>posted on:</h2>
 
-            </div>
+                <div id="post">
+                    <h2>posted on:</h2>
+                </div><!--end of div post-->
 
-             <div id="post_info">
+
+                <div id="post_info">
                     <time datetime="<?=Time::display($post_profile['created'],'Y-m-d G:i')?>">
                     <?=Time::display($post_profile['created'])?>
+                     <br>
                     </time>
-
-              </div>
-
-              <div= "post_content">
-        <p><br><?=$post_profile['content']?></p>
-        <a href='/posts/Update/<?=$post_profile['post_id']?>'>Update</a> | <a href='/posts/delete/<?=$post_profile['post_id']?>'>Delete</a>
+                </div><!--end of div post_info-->
 
 
-        <br>
-        </div>
-        </div> <!--end of class profile chatter-->
-    </article>
-    <br>
-    <br>
+            <div= "post_content">
+                     <br>
+                     <p> <?=$post_profile['content']?></p>
+                    <a href='/posts/Update/<?=$post_profile['post_id']?>'>Update</a> | <a href='/posts/delete/<?=$post_profile['post_id']?>'>Delete</a>
+                    <br>
+                </div><!--end of div post_content-->
+
+        </article>
+    </div> <!--end of div profile-->
+    <?php endforeach; ?>
 
 
-    <br>
-    <br>
+    <!-- Menu options for users who are not logged in -->
 
-<?php endforeach; ?>
-
-
+</div>
+<?php endif; ?>

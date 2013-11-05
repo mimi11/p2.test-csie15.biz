@@ -16,61 +16,69 @@
         <!--currently line 17 is generating an error code in w3c validation - it's encoding the php cod below as a script attribute
         and attribute value must not be empty an assigned value-->
 	    <?php if(isset($client_files_head)) echo $client_files_head; ?>
-	
+
     </head>
+    <body>
 
-  <body>
-    <div id="header">
-        <?=APP_NAME?>
+    <div id= "doc">
+        <div id="wrapper">
+            <div id="header"><!--div header starts here-->
+                <h1><?=APP_NAME?></h1>
+                    <div id="intro"><!--div Intro starts here-->
+                    <h5>Welcome to <?= APP_NAME ?><?php if ($user) echo ', ' . $user->first_name; ?></h5>
+                    </div><!--end of div intro"-->
 
-    </div><!--end of Header"-->
+             </div><!--end of div Header"-->
 
+             <div id='navigation'><!--div Navigation starts here-->
 
-    <div id='navigation'>
+                    <a href='/'>Home</a>
 
-        <a href='/'>Home</a>
+                 <!-- Menu for users who are logged in -->
+                  <?php if($user): ?>
 
-        <!-- Menu for users who are logged in -->
-        <?php if($user): ?>
-
-            <a href='/users/logout'>Logout</a>
-            <a href='/users/profile'>My Profile</a>
-            <a href='/posts/users'> Members</a>
-            <a href='/posts'> Followed Chatters</a>
-
-
-            <!-- Menu options for users who are not logged in -->
-        <?php else: ?>
-
-            <a href='/users/signup'>Sign up</a>
-            <a href='/users/login'>Log in</a>
-
-        <?php endif; ?>
-
-    </div><!-- End of Navigation here -->
-
-    <br>
+                    <a href='/users/logout'>Logout</a>
+                    <a href='/users/profile'>My Profile</a>
+                    <a href='/posts/users'> Members</a>
+                    <a href='/posts'> Followed Chatters</a>
 
 
-    <?php if(isset($content)) echo $content; ?>
+                 <!-- Menu options for users who are not logged in -->
+                    <?php else: ?>
+
+                     <a href='/users/signup'>Sign up</a>
+                     <a href='/users/login'title="Are you already a member? Login here">Log in</a>
+                    <?php endif; ?>
+
+              </div><!-- End of Navigation div here -->
+
+                <br>
 
 
-    <!-- if -->
-	<?php if(isset($client_files_body)) echo $client_files_body; ?>
+        <?php if(isset($content)) echo $content; ?>
 
-    <div id="footer"  >
+         <div id="home-content">
 
-        <ul>
-
-            <li>&bull; Last updated on: November 2,2013</li>
-
-            <li>&copy; 2013 AfterChatter.com All rights reserved.</li>
-            <li <a id="Profile" title="Go to Home" class="Home page" href='/'>Home</a> | <a id="Profile" title="Your Chatters" href="/users/profile"> Your Profile </a></li>
-
-        </ul>
+         </div>
 
 
-    </div> <!--close footer-->
+        <!-- if -->
+        <?php if(isset($client_files_body)) echo $client_files_body; ?>
 
-  </body>
+            <!-- Footer div begins here -->
+            <br>
+            <div id="footer" class="gtfooter" >
+                <ul>
+                    <li>&bull; Last updated on: November 5,2013 </li><li>&copy; 2013 AfterChatter.com All rights reserved.&nbsp;</li>
+                    <br>
+                    <li class="bottomnav"> <a id="home" title="Go to Home" class="Home page" href="/">Home </a>|
+                        <a id="home" title="Your Profile" class="ctus" href="/users/login"> Login </a>
+                </ul>
+
+            </div> <!--End of close footer-->
+
+        </div> <!--End of close wrapper-->
+
+    </div> <!--End of doc div -->
+ </body>
 </html>

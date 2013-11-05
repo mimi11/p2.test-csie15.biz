@@ -1,7 +1,6 @@
 <?php
 /*-------------------------------------------------------------------------------------------------
 Name: Carine Melhorn
-Student HuId: 50713350 / extension school id @00070108
 Project Name: p2.test-csie15.biz
 github url: https://github.com/mimi11/p2.test-csie15.biz
    -------------------------------------------------------------------------------------------------*/
