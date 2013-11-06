@@ -1,14 +1,14 @@
 <?php if ($user): ?>
 
     <!--<div class="avatar" style="background: url('<?=$user->avatar; ?>') center center no-repeat;"></div>-->
-    <div id ="wrapper">
+
         <div class="avatar" >
-            <img src="/uploads/avatars/example.gif">
+            <img src="/users/avatar" class="chix_avatar" alt ="user_avatar">
         </div>
 
     <div id="profile_links"
         <br>
-        <a href='/users/bio/''>Edit Bio Info Here</a> |  <a href='/posts/add'> Add a new Chatter Here</a>
+        <a href='/users/bio/''>View Bio Info Here</a> |  <a href='/posts/add'> Add a new Chatter Here</a>
         <br>
         <br>
 
@@ -54,5 +54,4 @@
 
     <!-- Menu options for users who are not logged in -->
 
-</div>
 <?php endif; ?>

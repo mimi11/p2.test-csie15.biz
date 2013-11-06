@@ -45,7 +45,7 @@ class users_controller extends base_controller
     public function p_signup()
     {
 
-
+        # Confirming if they have empty fields
 
          # More data we want stored with the user
         $_POST['created'] = Time::now();
@@ -60,9 +60,6 @@ class users_controller extends base_controller
         $_POST['token'] = sha1(TOKEN_SALT . $_POST['email'] . Utils::generate_random_string());
 
 
-        # Confirm if they have empty field
-
-
         # Confirm if duplicate email
         $email = $_POST['email'];
 
@@ -71,25 +68,24 @@ class users_controller extends base_controller
             if ($this->userObj->confirm_unique_email($email) == False) {
                 Router::redirect("/users/signup/duplicate_email_error");
 
-            } else {
-                     # Send them back to the login page
-                Router::redirect("/users/signup/blank_fields_error");
-            }
 
 
-        # But if no errors exist - sign-up succeeded!Insert this user into the database
-        $new_user = DB::instance(DB_NAME)->insert("users", $_POST);
+                }else {
 
 
-        # source code posted by Susan Buck on piazza Forum to log in users after sign-up)
-            if($new_user) {
-                setcookie('token',$_POST['token'], strtotime('+1 year'), '/');
-            }
+                      # But if no errors exist - sign-up succeeded!Insert this user into the database
+                      $new_user = DB::instance(DB_NAME)->insert("users", $_POST);
 
-            # Send them to their profile
-            Router::redirect('/users/profile');
+                       # source code posted by Susan Buck on piazza Forum to log in users after successful sign-up)
+                        if($new_user) {
+                        setcookie('token',$_POST['token'], strtotime('+1 year'), '/');
+                        }
 
-        }
+                        # Send them to their profile
+                         Router::redirect('/users/profile');
+
+                }
+    }
 
     public function login($error = NULL)
     {
@@ -110,7 +106,9 @@ class users_controller extends base_controller
         # check if user is already logged in, if yes redirect to profile
         if ($this->user) {
 
-            echo "You are currently logged in as"."$this->user->first_name";
+           # send them back to their profile
+            Router::redirect('/users/profile');
+
 
 
         }else{
@@ -174,6 +172,20 @@ class users_controller extends base_controller
 
         }
 
+
+
+    }
+
+
+    public function avatar()
+    {
+        //echo APP_PATH;
+        require(APP_PATH . "/libraries/Image.php");
+        $imageObj = new Image('http://duplexchick.com/files/2011/07/web-dc-avatar1-300x300.jpg');
+
+        $imageObj->resize(100, 100);
+
+        $imageObj->display();
     }
 
     public function logout()
@@ -204,8 +216,6 @@ class users_controller extends base_controller
         $this->template->content = View::instance('v_users_bio');
 
         #select all from user-id from db
-
-
         $this->template->title = "View/Edit Bio Info";
 
         #pass data to the view
@@ -220,7 +230,6 @@ class users_controller extends base_controller
 
         $bio = array();
 
-
         # Unix timestamp of when this post was modified
         $bio['modified'] = Time::now();
 
@@ -228,7 +237,6 @@ class users_controller extends base_controller
         $bio['first_name'] = $_POST['first_name'];
 
         #storing into user object $post and passing back to the DB
-
 
 
         # Update this user into the database
@@ -246,15 +254,52 @@ class users_controller extends base_controller
             echo "Unable to update your bio <a href='/users/p_bio'>Back to your post</a>";
         }
 
+    }
+/*-------------------------------------------------------------------------------------------------
 
+Some difficulties with displaying stored pictures/ uploading is working
+    public function bio_update(){
+        // if user specified a new image file, upload it
+        if ($_FILES['file']['error'] == 0)
+        {
+            //upload an image
+            $image = Upload::upload($_FILES, "/uploads/avatars/", array("JPG", "JPEG", "jpg", "jpeg", "gif", "GIF", "png", "PNG"), $this->user->user_id);
+
+            if($image == 'Invalid file type.') {
+                // return an error
+                #  Router::redirect("/users/profile/error");
+                echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
+            }
+            else {
+                // process the upload
+                $data = Array("image" => $image);
+                DB::instance(DB_NAME)->update("users", $data, "WHERE user_id = ".$this->user->user_id);
+
+                // resize the image
+                $imgObj = new Image($_SERVER["DOCUMENT_ROOT"]. '/uploads/avatars/' . $image);
+                $imgObj->resize(100,100, "crop");
+                $imgObj->save_image($_SERVER["DOCUMENT_ROOT"]. '/uploads/avatars/' . $image);
+
+            }
+
+
+        }
+        else
+        {
+            // return an error
+            Router::redirect("/users/profile/error");
+        }
+
+        // Redirect back to the profile page
+        router::redirect('/users/profile');
     }
 
 
+-------------------------------------------------------------------------------------------------*/
 
     public function profile()
     {
         $image = DB::instance(DB_NAME)->select_row('SELECT avatar FROM users WHERE user_id = ' . $this->user->user_id);
-
 
         # If user is blank, they're not logged in; redirect them to the login page
         if (!$this->user) {
@@ -268,8 +313,7 @@ class users_controller extends base_controller
         $this->template->content->avatar = $image;
 
 
-
-        # Query
+        # Query for all posts information pertinent to the user only
         $q = 'SELECT
             posts.content,
             posts.post_id,
@@ -296,40 +340,6 @@ class users_controller extends base_controller
 
 
     }
-
-    public function bio_update(){
-        // if user specified a new image file, upload it
-        if ($_FILES['file']['error'] == 0)
-        {
-            //upload an image
-            $image = Upload::upload($_FILES, "/uploads/avatars/", array("JPG", "JPEG", "jpg", "jpeg", "gif", "GIF", "png", "PNG"), $this->user->user_id);
-
-            if($image == 'Invalid file type.') {
-                // return an error
-              #  Router::redirect("/users/profile/error");
-               echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
-            }
-            else {
-                // process the upload
-                $data = Array("image" => $image);
-                DB::instance(DB_NAME)->update("users", $data, "WHERE user_id = ".$this->user->user_id);
-
-                // resize the image
-                $imgObj = new Image($_SERVER["DOCUMENT_ROOT"]. '/uploads/avatars/' . $image);
-                $imgObj->resize(100,100, "crop");
-                $imgObj->save_image($_SERVER["DOCUMENT_ROOT"]. '/uploads/avatars/' . $image);
-            }
-        }
-        else
-        {
-            // return an error
-            Router::redirect("/users/profile/error");
-        }
-
-        // Redirect back to the profile page
-        router::redirect('/users/profile');
-    }
-
 
 
 

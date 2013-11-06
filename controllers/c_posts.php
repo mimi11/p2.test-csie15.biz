@@ -12,7 +12,7 @@ class posts_controller extends base_controller
         parent::__construct();
 
 
-# Make sure user is logged in if they want to use anything in this controller
+        # Make sure user is logged in if they want to use anything in this controller
         if (!$this->user) {
             die("Members only. <a href='/users/login'>Login</a>");
         }
@@ -21,11 +21,11 @@ class posts_controller extends base_controller
     public function add()
     {
 
-# Setup view
+        # Setup view
         $this->template->content = View::instance('v_posts_add');
         $this->template->title = "New Post";
 
-# Render template
+        # Render template
         echo $this->template;
 
     }
@@ -33,41 +33,40 @@ class posts_controller extends base_controller
     public function p_add()
     {
 
-# Associate this post with this user
+        # Associate this post with this user
         $_POST['user_id'] = $this->user->user_id;
 
-# Unix timestamp of when this post was created / modified
+        # Unix timestamp of when this post was created / modified
         $_POST['created'] = Time::now();
         $_POST['modified'] = Time::now();
 
-# Insert
-# Note we didn't have to sanitize any of the $_POST data because we're using the insert method which does it for us
+        # Insert
+        # Note we didn't have to sanitize any of the $_POST data because we're using the insert method which does it for us
         DB::instance(DB_NAME)->insert('posts', $_POST);
 
-# Quick and dirty feedback
-        echo "Your post has been added. <a href='/posts/add'>Add another</a>";
+        # Quick and dirty feedback
+        echo "Your post has been added. <a href='/users/profile'>Back to your post.</a> Add a new post <a href = '/posts/add'> Here</a>";
 
     }
 
 
     public function update($post_id)
     {
+        #To render selected $ post id to the form, it must be retrieved from the table and stored into a new value that will be render by the view.
         $post = DB::instance(DB_NAME)->select_row('SELECT * FROM posts WHERE post_id = ' . $post_id);
-# Setup view
+        # Setup view
         $this->template->content = View::instance('v_posts_update');
         $this->template->title = "View/Edit Post";
-# Pass data to the View
+        # Pass data to the View
         $this->template->content->post = $post;
-
-
-# Render template
+        # Render template
         echo $this->template;
 
     }
 
     public function p_update()
     {
-        # an object loaded by the framework coming directly from the form.
+        # An object loaded by the framework coming directly from the form. Checking to ensure that only the id is only passed from the form and not injected into url
         $post_id = $this->sanitize_id($_POST['post_id']);
         $post = array();
 
@@ -79,7 +78,6 @@ class posts_controller extends base_controller
         $post['content'] = $_POST['content'];
 
         #storing into user object $post and passing back to the DB
-
 
 
         $number_of_rows_updated = DB::instance(DB_NAME)->update('posts', $post,
@@ -99,9 +97,11 @@ class posts_controller extends base_controller
 
 
     }
-    public function delete($post_id){
+
+    public function delete($post_id)
+    {
         $post_id = $this->sanitize_id($post_id);
-        $number_of_rows_deleted=DB::instance(DB_NAME)->delete('posts',  "WHERE post_id = '"
+        $number_of_rows_deleted = DB::instance(DB_NAME)->delete('posts', "WHERE post_id = '"
             . $post_id
             . "' AND user_id ='"
             . $this->user->user_id
@@ -151,8 +151,6 @@ class posts_controller extends base_controller
 
 
     }
-
-
 
 
     public function users()
