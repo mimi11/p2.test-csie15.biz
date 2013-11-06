@@ -68,10 +68,7 @@ class users_controller extends base_controller
             if ($this->userObj->confirm_unique_email($email) == False) {
                 Router::redirect("/users/signup/duplicate_email_error");
 
-
-
                 }else {
-
 
                       # But if no errors exist - sign-up succeeded!Insert this user into the database
                       $new_user = DB::instance(DB_NAME)->insert("users", $_POST);
@@ -85,6 +82,10 @@ class users_controller extends base_controller
                          Router::redirect('/users/profile');
 
                 }
+
+
+
+
     }
 
     public function login($error = NULL)
@@ -255,6 +256,7 @@ class users_controller extends base_controller
         }
 
     }
+
 /*-------------------------------------------------------------------------------------------------
 
 Some difficulties with displaying stored pictures/ uploading is working
