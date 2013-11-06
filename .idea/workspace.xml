@@ -14,7 +14,7 @@
     <file path="/v_users_login.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383633058606" ignored="false" />
     <file path="/c_base.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383413197806" ignored="false" />
     <file path="/c_index.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1382201465684" ignored="false" />
-    <file path="/_v_template.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383721512029" ignored="false" />
+    <file path="/_v_template.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383721899025" ignored="false" />
     <file path="/c_posts.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383703853295" ignored="false" />
     <file path="/v_index_index.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383664845442" ignored="false" />
     <file path="/sample-app.css" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1382719621028" ignored="false" />
@@ -61,7 +61,7 @@
       <file leaf-file-name="_v_template.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/_v_template.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="25" selection-start="2724" selection-end="2724" vertical-scroll-proportion="0.6782178">
+            <state line="18" column="71" selection-start="777" selection-end="777" vertical-scroll-proportion="-0.89768976">
               <folding />
             </state>
           </provider>
@@ -577,7 +577,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/_v_template.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="25" selection-start="2724" selection-end="2724" vertical-scroll-proportion="0.6782178">
+        <state line="18" column="71" selection-start="777" selection-end="777" vertical-scroll-proportion="-0.89768976">
           <folding />
         </state>
       </provider>

@@ -70,9 +70,9 @@
 
             <div id="footer" class="gtfooter" >
                 <ul>
-                    <li>&bull; Last updated on: November 5,2013 </li> <li>&copy; 2013 AfterChatter.com All rights reserved.</li>&nbsp;
-                    <li class="bottomnav"> <a id="home" title="Go to Home" class="Home page" href="/">Home </a>|
-                        <a id="home_profile title="Your Profile"  href="/users/login"> Login </a>
+                    <li>&bull; Last updated on: November 5,2013 </li> <li>&copy; 2013 AfterChatter.com All rights reserved.</li>
+                    <li <a id="bottomnav" title = "Go to Home" class="Home page" href="/">Home </a>|
+                        <a id="ftprofile" title="Your Profile"  href="/users/login"> Login </a>
                     </li>
                 </ul>
 
