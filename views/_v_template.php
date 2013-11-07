@@ -64,7 +64,7 @@
 
             </div> <!--end of main div-->
 
-      
+        </div><!--end of wrapper-->
 
        <div id= "footer">
                 <ul>

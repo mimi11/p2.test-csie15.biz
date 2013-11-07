@@ -1,3 +1,4 @@
+<div>
 <?php foreach($posts as $post): ?>
     <div post="post_index"></div>
     <article>
@@ -24,4 +25,5 @@
 
     <div/>
 <?php endforeach; ?>
+</div>
 

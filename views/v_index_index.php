@@ -1,3 +1,4 @@
+<div>
 <?php if ($user): ?>
     <div class="index_intro">
 
@@ -33,7 +34,7 @@
     <br>
 
 
-    </div><!--end of features-->
     </div><!--end of intro div-->
 
 <?php endif; ?>
+</div>

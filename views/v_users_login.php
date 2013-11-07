@@ -1,3 +1,4 @@
+<div>
 <?php if ($user): ?>
 
     <p> You are logged in as <?= $user->first_name ?> <?= $user->last_name ?> </p>
@@ -41,8 +42,9 @@
             <?php endif; ?>
             <input type='submit' value='Log in'>
 
-    </div>
+    </div><!--end of Loging div>
 
     </form>
 
 <?php endif; ?>
+</div>

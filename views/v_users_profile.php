@@ -1,4 +1,5 @@
-<?php if ($user): ?>
+<div>
+    <?php if ($user): ?>
 
     <!--<div class="avatar" style="background: url('<?=$user->avatar; ?>') center center no-repeat;"></div>-->
 
@@ -56,3 +57,4 @@
     <!-- Menu options for users who are not logged in -->
 
 <?php endif; ?>
+</div>

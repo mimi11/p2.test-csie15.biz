@@ -1,3 +1,4 @@
+<div>
 <? foreach ($users as $user): ?>
     <br>
 
@@ -17,3 +18,4 @@
     <br><br>
 
 <? endforeach; ?>
+</div>

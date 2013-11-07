@@ -1,3 +1,5 @@
+<p> It starts with new Chatter....</p>
+
 <form method='POST' action='/posts/p_add'>
 
     <label for='content'> Enter New Post:</label><br>
