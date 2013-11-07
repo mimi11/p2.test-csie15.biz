@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="55d61252-a19e-416e-bcfc-24d95722036b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/_v_template.php" afterPath="$PROJECT_DIR$/views/_v_template.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/app.css" afterPath="$PROJECT_DIR$/css/app.css" />
     </list>
     <ignored path="p2.test-csie15.biz.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -15,7 +14,7 @@
     <file path="/v_users_login.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383797933904" ignored="false" />
     <file path="/c_base.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383413197806" ignored="false" />
     <file path="/c_index.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1382201465684" ignored="false" />
-    <file path="/_v_template.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383851621098" ignored="false" />
+    <file path="/_v_template.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383852061922" ignored="false" />
     <file path="/c_posts.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383703853295" ignored="false" />
     <file path="/v_index_index.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383664845442" ignored="false" />
     <file path="/sample-app.css" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1382719621028" ignored="false" />
@@ -87,7 +86,10 @@
         <entry file="file://$PROJECT_DIR$/views/_v_template.php">
           <provider selected="true" editor-type-id="text-editor">
             <state line="2" column="10" selection-start="33" selection-end="33" vertical-scroll-proportion="0.024752475">
-              <folding />
+              <folding>
+                <marker date="1383852219000" expanded="true" signature="2073:2390" placeholder="..." />
+                <marker date="1383852219000" expanded="true" signature="2094:2251" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -615,7 +617,10 @@
     <entry file="file://$PROJECT_DIR$/views/_v_template.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="10" selection-start="33" selection-end="33" vertical-scroll-proportion="0.024752475">
-          <folding />
+          <folding>
+            <marker date="1383852219000" expanded="true" signature="2073:2390" placeholder="..." />
+            <marker date="1383852219000" expanded="true" signature="2094:2251" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>

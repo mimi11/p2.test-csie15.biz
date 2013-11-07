@@ -57,23 +57,21 @@
 
             <div id="main"><!--Home Landing page view starts here-->
 
-               <p><?php if(isset($content)) echo $content; ?></p>
+               <p><?php if(isset($content)) echo $content;?></p>
 
 
-                <!-- if -->
-           <!-- <php if(isset($client_files_body)) echo $client_files_body; ?>-->
-
+        
 
             </div> <!--end of main div-->
 
-        <!--</div> <!--end of wrapper-->
+        </div><!--end of wrapper-->
 
        <div id= "footer">
                 <ul>
                     <li>&bull;Special Features: Update and Delete Post</li> <li>&copy; 2013 AfterChatter.com All rights reserved.</li>
-                    <a title ="Go to Home"  href="/">Home </a>|
-                    <a title="Your Profile"  href="/users/login"> Login </a>
                 </ul>
+           <a title ="Go to Home"  href="/">Home </a>|
+           <a title="Your Profile"  href="/users/login"> Login </a>
 
         </div><!--End of Footer div-->
  </body>
