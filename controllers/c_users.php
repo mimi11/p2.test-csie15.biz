@@ -23,6 +23,13 @@ class users_controller extends base_controller
 
 
         }
+        #set up views
+
+        $this->template->content = View::instance('v_index_index');
+
+        # View within a view
+        $this->template->content->signup = View::instance('v_signup');
+
     }
 
     public function signup($error = NULL)
@@ -47,10 +54,9 @@ class users_controller extends base_controller
 
         # Confirming if they have empty fields
 
-         # More data we want stored with the user
+        # More data we want stored with the user
         $_POST['created'] = Time::now();
         $_POST['modified'] = Time::now();
-
 
 
         # Encrypt the password
@@ -64,28 +70,73 @@ class users_controller extends base_controller
         $email = $_POST['email'];
 
 
-        # Confirming if they have a duplicate email
-            if ($this->userObj->confirm_unique_email($email) == False) {
-                Router::redirect("/users/signup/duplicate_email_error");
-
-                }else {
-
-                      # But if no errors exist - sign-up succeeded!Insert this user into the database
-                      $new_user = DB::instance(DB_NAME)->insert("users", $_POST);
-
-                       # source code posted by Susan Buck on piazza Forum to log in users after successful sign-up)
-                        if($new_user) {
-                        setcookie('token',$_POST['token'], strtotime('+1 year'), '/');
-                        }
-
-                        # Send them to their profile
-                         Router::redirect('/users/profile');
-
-                }
+        # Signup form error checking
 
 
+        # 1.Confirming if they have a duplicate email
+
+        if ($this->userObj->confirm_unique_email($email) == False) {
+            Router::redirect("/users/signup/duplicate_email_error");
+
+        }
+
+        #2. Check for Required field names blank fields
+        $required = array('first_name', 'last_name', 'email', 'password');
+
+        # Loop over field names, make sure each one exists and is not empty
+        $error = false;
+
+        foreach ($required as $field) {
+
+            if (empty($_POST[$field])) {
+                $error = true;
+            }
+        }
+        # Redirect in case of error
+
+        if ($error) {
+            Router::redirect("/users/signup/blank_fields_error");
+        } else {
+
+            # But if no errors exist - sign-up succeeded!Insert this user into the database
+            $new_user = DB::instance(DB_NAME)->insert("users", $_POST);
 
 
+            # Send an email to the user's email address.
+            # Build a multi-dimension array of recipients of this email
+            $to[] = Array("name" => $_POST['first_name'], "email" => $_POST['email']);
+
+            # Build a single-dimension array of who this email is coming from
+            # note it's using the constants we set in the configuration above)
+            $from = Array("name" => APP_NAME, "email" => APP_EMAIL);
+
+            # Subject
+            $subject = "Welcome to Chatter";
+
+            # You can set the body as just a string of text
+            $body = "This is just a message to confirm your registration at Chatter.biz";
+
+            # if email is complex and involves HTML/CSS, you can build the body via a View like we do in our controllers
+            # $body = View::instance('e_users_welcome');
+
+            # Build multi-dimension arrays of name / email pairs for cc / bcc if you want to
+            $cc = "";
+            $bcc = "";
+
+            # With everything set, send the email
+            $email = Email::send($to, $from, $subject, $body, true, $cc, $bcc);
+
+            # Confirm they've signed up -
+
+
+            # log in users after successful sign-up)
+            if ($new_user) {
+                setcookie('token', $_POST['token'], strtotime('+1 year'), '/');
+            }
+
+            # Send them to their profile
+            Router::redirect('/users/profile');
+        }
     }
 
     public function login($error = NULL)
@@ -107,12 +158,11 @@ class users_controller extends base_controller
         # check if user is already logged in, if yes redirect to profile
         if ($this->user) {
 
-           # send them back to their profile
+            # send them back to their profile
             Router::redirect('/users/profile');
 
 
-
-        }else{
+        } else {
             # Sanitize the user entered data to prevent any funny-business (re: SQL Injection Attacks)
             $_POST = DB::instance(DB_NAME)->sanitize($_POST);
 
@@ -174,13 +224,11 @@ class users_controller extends base_controller
         }
 
 
-
     }
-
 
     public function avatar()
     {
-        //echo APP_PATH;
+
         require(APP_PATH . "/libraries/Image.php");
         $imageObj = new Image('http://duplexchick.com/files/2011/07/web-dc-avatar1-300x300.jpg');
 
@@ -209,8 +257,9 @@ class users_controller extends base_controller
 
     }
 
-    public function bio(){
-        $profile_id= DB::instance(DB_NAME)->select_row('SELECT * FROM users WHERE user_id = ' . $this->user->user_id);
+    public function bio()
+    {
+        $profile_id = DB::instance(DB_NAME)->select_row('SELECT * FROM users WHERE user_id = ' . $this->user->user_id);
 
 
         # Setup view
@@ -227,7 +276,9 @@ class users_controller extends base_controller
 
 
     }
-    public function p_bio(){
+
+    public function p_bio()
+    {
 
         $bio = array();
 
@@ -257,47 +308,47 @@ class users_controller extends base_controller
 
     }
 
-/*-------------------------------------------------------------------------------------------------
+    /*-------------------------------------------------------------------------------------------------
 
-Some difficulties with displaying stored pictures/ uploading is working
-    public function bio_update(){
-        // if user specified a new image file, upload it
-        if ($_FILES['file']['error'] == 0)
-        {
-            //upload an image
-            $image = Upload::upload($_FILES, "/uploads/avatars/", array("JPG", "JPEG", "jpg", "jpeg", "gif", "GIF", "png", "PNG"), $this->user->user_id);
+    Some difficulties with displaying stored pictures/ uploading is working
+        public function bio_update(){
+            // if user specified a new image file, upload it
+            if ($_FILES['file']['error'] == 0)
+            {
+                //upload an image
+                $image = Upload::upload($_FILES, "/uploads/avatars/", array("JPG", "JPEG", "jpg", "jpeg", "gif", "GIF", "png", "PNG"), $this->user->user_id);
 
-            if($image == 'Invalid file type.') {
+                if($image == 'Invalid file type.') {
+                    // return an error
+                    #  Router::redirect("/users/profile/error");
+                    echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
+                }
+                else {
+                    // process the upload
+                    $data = Array("image" => $image);
+                    DB::instance(DB_NAME)->update("users", $data, "WHERE user_id = ".$this->user->user_id);
+
+                    // resize the image
+                    $imgObj = new Image($_SERVER["DOCUMENT_ROOT"]. '/uploads/avatars/' . $image);
+                    $imgObj->resize(100,100, "crop");
+                    $imgObj->save_image($_SERVER["DOCUMENT_ROOT"]. '/uploads/avatars/' . $image);
+
+                }
+
+
+            }
+            else
+            {
                 // return an error
-                #  Router::redirect("/users/profile/error");
-                echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
-            }
-            else {
-                // process the upload
-                $data = Array("image" => $image);
-                DB::instance(DB_NAME)->update("users", $data, "WHERE user_id = ".$this->user->user_id);
-
-                // resize the image
-                $imgObj = new Image($_SERVER["DOCUMENT_ROOT"]. '/uploads/avatars/' . $image);
-                $imgObj->resize(100,100, "crop");
-                $imgObj->save_image($_SERVER["DOCUMENT_ROOT"]. '/uploads/avatars/' . $image);
-
+                Router::redirect("/users/profile/error");
             }
 
-
-        }
-        else
-        {
-            // return an error
-            Router::redirect("/users/profile/error");
+            // Redirect back to the profile page
+            router::redirect('/users/profile');
         }
 
-        // Redirect back to the profile page
-        router::redirect('/users/profile');
-    }
 
-
--------------------------------------------------------------------------------------------------*/
+    -------------------------------------------------------------------------------------------------*/
 
     public function profile()
     {
@@ -342,7 +393,6 @@ Some difficulties with displaying stored pictures/ uploading is working
 
 
     }
-
 
 
 } # end of the class

@@ -14,28 +14,29 @@
 	    it comes down to a performance thing - so js script let all the content load
 	    first, then let the java script -->
 
-        <!--currently line 17 is generating an error code in w3c validation - it's encoding the php cod below as a script attribute
-        and attribute value must not be empty an assigned value-->
-	    <?php if(isset($client_files_head)) echo $client_files_head; ?>
+
+	   <!-- ?php if(isset($client_files_head)) echo $client_files_head; ?>-->
+
+
 
     </head>
 
-  <body>
-    <div class= "doc">
-        <div id="wrapper">
-            <div id="header"><!--div Header starts here-->
-                <h1><?=APP_NAME?></h1>
+     <body>
+         <div id="wrapper">
+              <div id="header"><!--div Header starts here-->
+
+                  <h1><?=APP_NAME?></h1>
                     <div id="intro"><!--div Intro starts here-->
                     <h5>Welcome to <?= APP_NAME ?><?php if ($user) echo ', ' . $user->first_name; ?></h5>
                     </div><!--end of div intro"-->
 
-             </div><!--End of div Header"-->
+              </div><!--End of div Header"-->
 
-             <div id='navigation'><!--div Navigation starts here-->
+              <div id='navigation'><!--div Navigation starts here-->
 
                     <a href='/'>Home</a>
 
-                 <!-- Menu for users who are logged in -->
+           <!-- Menu for users who are logged in -->
                   <?php if($user): ?>
 
                     <a href='/users/logout'>Logout</a>
@@ -44,40 +45,37 @@
                     <a href='/posts'> Followed Chatters</a>
 
 
-                 <!-- Menu options for users who are not logged in -->
+          <!-- Menu options for users who are not logged in -->
                     <?php else: ?>
 
                      <a href='/users/signup'>Sign up</a>
                      <a href='/users/login' title="Are you already a member? Login here">Log in</a>
                     <?php endif; ?>
 
-              </div><!-- End of Navigation div here -->
+            </div><!-- End of Navigation div here -->
 
-                <br>
+            <br>
 
-
-        <?php if(isset($content)) echo $content; ?>
-
-         <div id="Landing_page">
-
-         </div>
+            <div id="main"><!--Home Landing page view starts here-->
+            <div id="main"><!--Home Landing page view starts here-->
+                <?php if(isset($content)) echo $content; ?>
 
 
-        <!-- if -->
-        <?php if(isset($client_files_body)) echo $client_files_body; ?>
+                <!-- if -->
+            <?php if(isset($client_files_body)) echo $client_files_body; ?>
 
-            <!-- Footer div begins here -->
 
-            <div id="footer" class="gtfooter" >
+            </div><!--end of main div-->
+
+        </div><!--end of wrapper-->
+
+       <div id="footer">
                 <ul>
-                    <li>&bull; Last updated on: November 5,2013 </li> <li>&copy; 2013 AfterChatter.com All rights reserved.</li>
-                    <li <a id="bottomnav" title = "Go to Home" class="Home page" href="/">Home </a>|
-                        <a id="ftprofile" title="Your Profile"  href="/users/login"> Login </a>
-                    </li>
+                    <li>&bull;Special Features: Update and Delete Post</li> <li>&copy; 2013 AfterChatter.com All rights reserved.</li>
+                    <a id="bottomnav" title ="Go to Home"  href="/">Home </a>|
+                    <a id="ftprofile" title="Your Profile"  href="/users/login"> Login </a>
                 </ul>
 
-            </div><!--End of Footer div-->
-        </div><!--End of Wrapper div-->
-     </div><!--End of doc div-->
+        </div><!--End of Footer div-->
  </body>
 </html>

@@ -1,0 +1,36 @@
+2013-11-06 23:41:52 - INFO --> -------------------------- 
+2013-11-06 23:41:52 - INFO --> Controller/Method: users/p_signup 
+2013-11-06 23:41:52 - INFO --> OUTGOING EMAILS ARE DISABLED. THIS EMAIL WAS NOT SENT TO THE RECIPIENTS, ONLY cmelhorn@g.harvard.edu 
+2013-11-06 23:41:52 - INFO --> From:  (cmelhorn@g.harvard.edu) 
+2013-11-06 23:41:52 - INFO --> To:  (lewis@gmail.com),  
+2013-11-06 23:41:52 - INFO --> CC:  
+2013-11-06 23:41:52 - INFO --> BCC:  
+2013-11-06 23:41:52 - INFO --> Subject: Welcome to Chatter 
+2013-11-06 23:41:52 - INFO --> Body: This is just a message to confirm your registration at Chatter.biz 
+2013-11-06 23:44:46 - INFO --> -------------------------- 
+2013-11-06 23:44:46 - INFO --> Controller/Method: users/p_signup 
+2013-11-06 23:44:46 - INFO --> OUTGOING EMAILS ARE DISABLED. THIS EMAIL WAS NOT SENT TO THE RECIPIENTS, ONLY cmelhorn@g.harvard.edu 
+2013-11-06 23:44:46 - INFO --> From:  (cmelhorn@g.harvard.edu) 
+2013-11-06 23:44:46 - INFO --> To:  (james@chatter.com),  
+2013-11-06 23:44:46 - INFO --> CC:  
+2013-11-06 23:44:46 - INFO --> BCC:  
+2013-11-06 23:44:46 - INFO --> Subject: Welcome to Chatter 
+2013-11-06 23:44:46 - INFO --> Body: This is just a message to confirm your registration at Chatter.biz 
+2013-11-06 23:50:51 - INFO --> -------------------------- 
+2013-11-06 23:50:51 - INFO --> Controller/Method: users/p_signup 
+2013-11-06 23:50:51 - INFO --> OUTGOING EMAILS ARE DISABLED. THIS EMAIL WAS NOT SENT TO THE RECIPIENTS, ONLY cmelhorn@g.harvard.edu 
+2013-11-06 23:50:51 - INFO --> From: @Chatter (cmelhorn@g.harvard.edu) 
+2013-11-06 23:50:51 - INFO --> To: user (user_admin@chatter.com),  
+2013-11-06 23:50:51 - INFO --> CC:  
+2013-11-06 23:50:51 - INFO --> BCC:  
+2013-11-06 23:50:51 - INFO --> Subject: Welcome to Chatter 
+2013-11-06 23:50:51 - INFO --> Body: This is just a message to confirm your registration at Chatter.biz 
+2013-11-06 23:53:19 - INFO --> -------------------------- 
+2013-11-06 23:53:19 - INFO --> Controller/Method: users/p_signup 
+2013-11-06 23:53:19 - INFO --> OUTGOING EMAILS ARE DISABLED. THIS EMAIL WAS NOT SENT TO THE RECIPIENTS, ONLY cmelhorn@g.harvard.edu 
+2013-11-06 23:53:19 - INFO --> From: @Chatter (cmelhorn@g.harvard.edu) 
+2013-11-06 23:53:19 - INFO --> To: user (user@chatter.com),  
+2013-11-06 23:53:19 - INFO --> CC:  
+2013-11-06 23:53:19 - INFO --> BCC:  
+2013-11-06 23:53:19 - INFO --> Subject: Welcome to Chatter 
+2013-11-06 23:53:19 - INFO --> Body: This is just a message to confirm your registration at Chatter.biz 

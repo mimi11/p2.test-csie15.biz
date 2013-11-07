@@ -1,0 +1,9 @@
+2013-11-07 12:23:10 - INFO --> -------------------------- 
+2013-11-07 12:23:10 - INFO --> Controller/Method: users/p_signup 
+2013-11-07 12:23:10 - INFO --> OUTGOING EMAILS ARE DISABLED. THIS EMAIL WAS NOT SENT TO THE RECIPIENTS, ONLY cmelhorn@g.harvard.edu 
+2013-11-07 12:23:10 - INFO --> From: @Chatter (cmelhorn@g.harvard.edu) 
+2013-11-07 12:23:10 - INFO --> To: Nicole (Nicole.williams@whitehouse.gov),  
+2013-11-07 12:23:10 - INFO --> CC:  
+2013-11-07 12:23:10 - INFO --> BCC:  
+2013-11-07 12:23:10 - INFO --> Subject: Welcome to Chatter 
+2013-11-07 12:23:10 - INFO --> Body: This is just a message to confirm your registration at Chatter.biz 
