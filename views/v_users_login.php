@@ -1,5 +1,5 @@
 <div>
-<?php if ($user): ?>
+    <?php if ($user): ?>
 
     <p> You are logged in as <?= $user->first_name ?> <?= $user->last_name ?> </p>
     <p> Check out your profile <a href='/users/profile'> here</a> Or Follow the Chatters community
@@ -42,9 +42,8 @@
             <?php endif; ?>
             <input type='submit' value='Log in'>
 
-    </div><!--end of Loging div>
-
     </form>
+    </div><!--end of Loging div>
 
 <?php endif; ?>
 </div>

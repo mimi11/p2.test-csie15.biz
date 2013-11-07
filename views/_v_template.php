@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-    	<title><?php if(isset($title)) echo $title; ?></title>
+    	<title><?php if(isset($title)) echo $title;?></title>
 
 	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
 
 	    <!-- Controller Specific JS/CSS -->
         <link rel="stylesheet" href="/css/app.css" type ="text/css"/>
@@ -14,8 +13,6 @@
 	    it comes down to a performance thing - so js script let all the content load
 	    first, then let the java script -->
 
-
-	   <!-- ?php if(isset($client_files_head)) echo $client_files_head; ?>-->
 
 
     </head>
@@ -55,16 +52,12 @@
 
             <br>
 
-            <div id="main"><!--Home Landing page view starts here-->
+            <div id="main"> <!--Home Landing page view starts here-->
 
                <?php if(isset($content)) echo $content;?>
 
-
-
-
             </div> <!--end of main div-->
-
-        </div><!--end of wrapper-->
+        </div> <!--end of wrapper-->
 
        <div id= "footer">
                 <ul>
