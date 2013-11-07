@@ -18,12 +18,11 @@
 	   <!-- ?php if(isset($client_files_head)) echo $client_files_head; ?>-->
 
 
-
     </head>
 
      <body>
-         <div id="wrapper">
-              <div id="header"><!--div Header starts here-->
+         <div id = "wrapper">
+              <div id = "header"><!--div Header starts here-->
 
                   <h1><?=APP_NAME?></h1>
                     <div id="intro"><!--div Intro starts here-->
@@ -57,23 +56,23 @@
             <br>
 
             <div id="main"><!--Home Landing page view starts here-->
-            <div id="main"><!--Home Landing page view starts here-->
-                <?php if(isset($content)) echo $content; ?>
+
+               <p><?php if(isset($content)) echo $content; ?></p>
 
 
                 <!-- if -->
-            <?php if(isset($client_files_body)) echo $client_files_body; ?>
+           <!-- <php if(isset($client_files_body)) echo $client_files_body; ?>-->
 
 
-            </div><!--end of main div-->
+            </div> <!--end of main div-->
 
-        </div><!--end of wrapper-->
+        <!--</div> <!--end of wrapper-->
 
-       <div id="footer">
+       <div id= "footer">
                 <ul>
                     <li>&bull;Special Features: Update and Delete Post</li> <li>&copy; 2013 AfterChatter.com All rights reserved.</li>
-                    <a id="bottomnav" title ="Go to Home"  href="/">Home </a>|
-                    <a id="ftprofile" title="Your Profile"  href="/users/login"> Login </a>
+                    <a title ="Go to Home"  href="/">Home </a>|
+                    <a title="Your Profile"  href="/users/login"> Login </a>
                 </ul>
 
         </div><!--End of Footer div-->

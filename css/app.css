@@ -23,7 +23,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 /* style sheet rules begins heres */
 
 body {
-    width: 100%;
+    width: 1000px;
     line-height: 1;
     color: grey;
     background: #afeeee;
