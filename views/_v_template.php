@@ -52,14 +52,14 @@
 
             <br>
 
-            <div id="main"> <!--Home Landing page view starts here-->
+            <div id="main"> <!-- Main div starts  -->
 
                <?php if(isset($content)) echo $content;?>
 
-            </div> <!--end of main div-->
-        </div> <!--end of wrapper-->
+            </div>  <!-- End of Main div -->
+         </div><!--end of wrapper-->
 
-       <div id= "footer">
+        <div id= "footer">
                 <ul>
                     <li>&bull;Special Features: Update and Delete Post</li> <li>&copy; 2013 AfterChatter.com All rights reserved.</li>
                 </ul>
