@@ -26,9 +26,9 @@
                     <h5>Welcome to <?= APP_NAME ?><?php if ($user) echo ', ' . $user->first_name; ?></h5>
                     </div><!--end of div intro"-->
 
-              </div><!--End of div Header"-->
+              </div> <!--End of div Header"-->
 
-              <div id='navigation'><!--div Navigation starts here-->
+              <div id='navigation'> <!--div Navigation starts here-->
 
                     <a href='/'>Home</a>
 
@@ -48,7 +48,7 @@
                      <a href='/users/login' title="Are you already a member? Login here">Log in</a>
                     <?php endif; ?>
 
-            </div><!-- End of Navigation div here -->
+            </div> <!-- End of Navigation div here -->
 
             <br>
 
