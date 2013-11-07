@@ -57,14 +57,14 @@
 
             <div id="main"><!--Home Landing page view starts here-->
 
-               <p><?php if(isset($content)) echo $content;?></p>
+               <?php if(isset($content)) echo $content;?>
 
 
-        
+
 
             </div> <!--end of main div-->
 
-        </div><!--end of wrapper-->
+      
 
        <div id= "footer">
                 <ul>
