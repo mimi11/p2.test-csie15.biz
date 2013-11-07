@@ -43,7 +43,7 @@
             <input type='submit' value='Log in'>
 
     </form>
-    </div><!--end of Loging div>
+    </div><!--end of Loging div-->
 
 <?php endif; ?>
 </div>

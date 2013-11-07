@@ -54,7 +54,7 @@
 
             <div id="main"> <!-- Main div starts  -->
 
-               <?php if(isset($content)) echo $content;?>
+              <h5> <?php if(isset($content)) echo $content;?></h5>
 
             </div>  <!-- End of Main div -->
          </div><!--end of wrapper-->
