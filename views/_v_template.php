@@ -21,9 +21,10 @@
               <div id = "header"><!--div Header starts here-->
 
                   <h1><?=APP_NAME?></h1>
-                    <div id="intro"><!--div Intro starts here-->
+
+                    <div id="intro"> <!--div Intro starts here-->
                     <h4>Welcome to <?= APP_NAME ?><?php if ($user) echo ', ' . $user->first_name; ?></h4>
-                    </div><!--end of div intro"-->
+                    </div> <!--end of div intro"-->
 
               </div><!--End of div Header"-->
 
@@ -55,8 +56,8 @@
 
                <?php if(isset($content)) echo $content;?>
 
-            </div>  <!-- End of Main div -->
-    </div><!--end of Wrapper div-->
+         
+    </div> <!--end of Wrapper div-->
 
         <div id= "footer">
                 <ul>
