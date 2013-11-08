@@ -13,8 +13,10 @@ class posts_controller extends base_controller
 
 
         # Make sure user is logged in if they want to use anything in this controller
-        if (!$this->user) {
-            echo"Members only. <a href='/users/login'>Login</a>";
+        if (!$this->user->user_id) {
+
+            die(" Members only. <a href='/users/login'>Login</a>");
+            
         }
     }
 
