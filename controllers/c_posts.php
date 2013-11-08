@@ -16,7 +16,7 @@ class posts_controller extends base_controller
         if (!$this->user->user_id) {
 
             die(" Members only. <a href='/users/login'>Login</a>");
-            
+
         }
     }
 
