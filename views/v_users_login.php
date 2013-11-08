@@ -45,5 +45,7 @@
     </form>
     </div><!--end of Loging div-->
 
+
+
 <?php endif; ?>
 </div>

@@ -140,6 +140,7 @@ strong {
     overflow: hidden;
     border-bottom: 2px solid teal;
     font-variant: normal;
+    text-spacing: space-end;
     font-size: 1.3em; /*font-family: Georgia, "Palatino Linotype", "Times New Roman", serif; */
 }
 

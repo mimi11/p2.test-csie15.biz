@@ -352,7 +352,7 @@ class users_controller extends base_controller
 
     public function profile()
     {
-        $image = DB::instance(DB_NAME)->select_row('SELECT avatar FROM users WHERE user_id = ' . $this->user->user_id);
+
 
         # If user is blank, they're not logged in; redirect them to the login page
         if (!$this->user) {
@@ -363,7 +363,7 @@ class users_controller extends base_controller
 
         # Setup view
         $this->template->content = View::instance('v_users_profile');
-        $this->template->content->avatar = $image;
+       
 
 
         # Query for all posts information pertinent to the user only

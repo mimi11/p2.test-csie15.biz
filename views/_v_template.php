@@ -12,14 +12,11 @@
 	    you may have java script has to be there before the java code execute
 	    it comes down to a performance thing - so js script let all the content load
 	    first, then let the java script -->
-
-
-
     </head>
 
      <body>
-         <div id = "wrapper">
-              <div id = "header"><!--div Header starts here-->
+         <div id = "wrapper"> <!--div Wrapper starts here -->
+              <div id = "header"> <!--div Header starts here-->
 
                   <h1><?=APP_NAME?></h1>
                     <div id="intro"><!--div Intro starts here-->
@@ -30,38 +27,36 @@
 
               <div id='navigation'> <!--div Navigation starts here-->
 
-                    <a href='/'>Home</a>
+                    <a href='/'>Home  |</a>
 
-           <!-- Menu for users who are logged in -->
+                   <!-- Menu for users who are logged in -->
                   <?php if($user): ?>
 
-                    <a href='/users/logout'>Logout</a>
-                    <a href='/users/profile'>My Profile</a>
-                    <a href='/posts/users'> Members</a>
-                    <a href='/posts'> Followed Chatters</a>
+                    <a href='/users/logout'>Logout |</a>
+                    <a href='/users/profile'>My Profile  |</a>
+                    <a href='/posts/users'> Members  |</a>
+                    <a href='/posts'> Followed Chatters </a>
 
 
-          <!-- Menu options for users who are not logged in -->
+                  <!-- Menu options for users who are not logged in -->
                     <?php else: ?>
 
-                     <a href='/users/signup'>Sign up</a>
+                     <a href='/users/signup'>Sign up  </a>
                      <a href='/users/login' title="Are you already a member? Login here">Log in</a>
                     <?php endif; ?>
 
-            </div> <!-- End of Navigation div here -->
+                </div> <!-- End of Navigation div here -->
 
-            <br>
 
-            <div id="main"> <!-- Main div starts  -->
-
+            <div id ="main"> <!-- Main div starts  -->
+              <br>
               <?php if(isset($content)) echo $content;?>
-
-            </div>  <!-- End of Main div -->
-         </div><!--end of wrapper-->
+            </div>  <!-- End of Main div-->
+           </div><!--end of wrapper-->
 
         <div id= "footer">
                 <ul>
-                    <li>&bull;Special Features: Update and Delete Post</li> <li>&copy; 2013 AfterChatter.com All rights reserved.</li>
+                    <li>&bull;Special Features: 1.Update 2. Delete Post</li> <li>&copy; 2013 AfterChatter.com All rights reserved.</li>
                 </ul>
            <a title ="Go to Home"  href="/">Home </a>|
            <a title="Your Profile"  href="/users/login"> Login </a>
