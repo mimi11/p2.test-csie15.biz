@@ -13,9 +13,9 @@ class posts_controller extends base_controller
 
 
         # Make sure user is logged in if they want to use anything in this controller
-        if (!$this->user->user_id) {
+        if (!$this->user) {
 
-            die(" Members only. <a href='/users/login'>Login</a>");
+           echo " Members only. <a href='/users/login'>Login</a>";
 
         }
     }
@@ -42,7 +42,7 @@ class posts_controller extends base_controller
         $_POST['created'] = Time::now();
         $_POST['modified'] = Time::now();
 
-        # Insert
+        # Insert  
         # Note we didn't have to sanitize any of the $_POST data because we're using the insert method which does it for us
         DB::instance(DB_NAME)->insert('posts', $_POST);
 

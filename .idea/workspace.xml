@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="55d61252-a19e-416e-bcfc-24d95722036b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/c_posts.php" afterPath="$PROJECT_DIR$/controllers/c_posts.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/v_users_bio.php" afterPath="$PROJECT_DIR$/views/v_users_bio.php" />
     </list>
     <ignored path="p2.test-csie15.biz.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -16,7 +15,7 @@
     <file path="/c_base.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383413197806" ignored="false" />
     <file path="/c_index.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1382201465684" ignored="false" />
     <file path="/_v_template.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383879062893" ignored="false" />
-    <file path="/c_posts.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383881476709" ignored="false" />
+    <file path="/c_posts.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383884006147" ignored="false" />
     <file path="/v_index_index.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383878212474" ignored="false" />
     <file path="/sample-app.css" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1382719621028" ignored="false" />
     <file path="/app.css" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383878989836" ignored="false" />
