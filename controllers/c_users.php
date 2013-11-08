@@ -363,7 +363,7 @@ class users_controller extends base_controller
 
         # Setup view
         $this->template->content = View::instance('v_users_profile');
-       
+
 
 
         # Query for all posts information pertinent to the user only

@@ -5,7 +5,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/_v_template.php" afterPath="$PROJECT_DIR$/views/_v_template.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/app.css" afterPath="$PROJECT_DIR$/css/app.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/c_users.php" afterPath="$PROJECT_DIR$/controllers/c_users.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/v_users_login.php" afterPath="$PROJECT_DIR$/views/v_users_login.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/v_index_index.php" afterPath="$PROJECT_DIR$/views/v_index_index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="p2.test-csie15.biz.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -17,11 +18,11 @@
     <file path="/v_users_login.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383853485381" ignored="false" />
     <file path="/c_base.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383413197806" ignored="false" />
     <file path="/c_index.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1382201465684" ignored="false" />
-    <file path="/_v_template.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383876298687" ignored="false" />
+    <file path="/_v_template.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383879062893" ignored="false" />
     <file path="/c_posts.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383861073466" ignored="false" />
-    <file path="/v_index_index.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383853059301" ignored="false" />
+    <file path="/v_index_index.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383878212473" ignored="false" />
     <file path="/sample-app.css" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1382719621028" ignored="false" />
-    <file path="/app.css" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383875583258" ignored="false" />
+    <file path="/app.css" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383878989836" ignored="false" />
     <file path="/v_posts_index.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383852939000" ignored="false" />
     <file path="/v_users_profile.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383852861557" ignored="false" />
     <file path="/v_posts_add.php" changelist="55d61252-a19e-416e-bcfc-24d95722036b" time="1383853009873" ignored="false" />
@@ -76,16 +77,16 @@
       <file leaf-file-name="_v_template.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/_v_template.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="18" selection-start="1867" selection-end="1867" vertical-scroll-proportion="-12.041667">
+            <state line="62" column="41" selection-start="2042" selection-end="2042" vertical-scroll-proportion="-15.791667">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="c_users.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="c_users.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/c_users.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="365" column="7" selection-start="11178" selection-end="11178" vertical-scroll-proportion="-0.010362694">
+            <state line="365" column="0" selection-start="11171" selection-end="11171" vertical-scroll-proportion="0.12244898">
               <folding />
             </state>
           </provider>
@@ -112,10 +113,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.css" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/app.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="142" column="27" selection-start="2291" selection-end="2291" vertical-scroll-proportion="0.0">
+            <state line="176" column="4" selection-start="2849" selection-end="2849" vertical-scroll-proportion="0.7878315">
               <folding />
             </state>
           </provider>
@@ -124,7 +125,7 @@
       <file leaf-file-name="v_index_index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/v_index_index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="6" selection-start="1178" selection-end="1178" vertical-scroll-proportion="-23.208334">
+            <state line="14" column="91" selection-start="561" selection-end="561" vertical-scroll-proportion="-8.125">
               <folding />
             </state>
           </provider>
@@ -194,13 +195,13 @@
         <option value="$PROJECT_DIR$/views/v_users_profile.php" />
         <option value="$PROJECT_DIR$/views/v_posts_index.php" />
         <option value="$PROJECT_DIR$/views/v_posts_add.php" />
-        <option value="$PROJECT_DIR$/views/v_index_index.php" />
         <option value="$PROJECT_DIR$/views/v_posts_users.php" />
         <option value="$PROJECT_DIR$/views/v_users_login.php" />
         <option value="$PROJECT_DIR$/controllers/c_posts.php" />
-        <option value="$PROJECT_DIR$/css/app.css" />
-        <option value="$PROJECT_DIR$/views/_v_template.php" />
         <option value="$PROJECT_DIR$/controllers/c_users.php" />
+        <option value="$PROJECT_DIR$/views/v_index_index.php" />
+        <option value="$PROJECT_DIR$/views/_v_template.php" />
+        <option value="$PROJECT_DIR$/css/app.css" />
       </list>
     </option>
   </component>
@@ -380,11 +381,14 @@
       <recent name="$PROJECT_DIR$/js" />
     </key>
   </component>
-  <component name="RunManager" selected="PHP Script._v_posts_update.php">
+  <component name="RunManager" selected="PHP Script._v_template.php">
     <configuration default="false" name="c_practice.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/controllers/c_practice.php">
       <method />
     </configuration>
     <configuration default="false" name="_v_posts_update.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/views/_v_posts_update.php">
+      <method />
+    </configuration>
+    <configuration default="false" name="_v_template.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/views/_v_template.php">
       <method />
     </configuration>
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -394,14 +398,16 @@
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="PHP Script.c_practice.php" />
       <item index="1" class="java.lang.String" itemvalue="PHP Script._v_posts_update.php" />
+      <item index="2" class="java.lang.String" itemvalue="PHP Script._v_template.php" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="PHP Script._v_posts_update.php" />
-        <item index="1" class="java.lang.String" itemvalue="PHP Script.c_practice.php" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="PHP Script._v_template.php" />
+        <item index="1" class="java.lang.String" itemvalue="PHP Script._v_posts_update.php" />
+        <item index="2" class="java.lang.String" itemvalue="PHP Script.c_practice.php" />
       </list>
     </recent_temporary>
   </component>
@@ -567,13 +573,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/v_posts_index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="6" selection-start="595" selection-end="595" vertical-scroll-proportion="-16.875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/v_posts_add.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="34" selection-start="34" selection-end="34" vertical-scroll-proportion="0.0">
@@ -598,27 +597,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/v_index_index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="6" selection-start="1178" selection-end="1178" vertical-scroll-proportion="-23.208334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/app.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="142" column="27" selection-start="2291" selection-end="2291" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/_v_template.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="18" selection-start="1867" selection-end="1867" vertical-scroll-proportion="-12.041667">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/v_users_bio.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="0" selection-start="259" selection-end="259" vertical-scroll-proportion="-5.0">
@@ -635,7 +613,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/c_users.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="365" column="7" selection-start="11178" selection-end="11178" vertical-scroll-proportion="-0.010362694">
+        <state line="365" column="0" selection-start="11171" selection-end="11171" vertical-scroll-proportion="0.12244898">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/v_posts_index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="6" selection-start="595" selection-end="595" vertical-scroll-proportion="-16.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/v_index_index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="91" selection-start="561" selection-end="561" vertical-scroll-proportion="-8.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/_v_template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="41" selection-start="2042" selection-end="2042" vertical-scroll-proportion="-15.791667">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="176" column="4" selection-start="2849" selection-end="2849" vertical-scroll-proportion="0.7878315">
           <folding />
         </state>
       </provider>

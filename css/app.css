@@ -77,11 +77,17 @@ strong {
 #main {
     position: relative;
     padding: 2em;
-}
 
+}
+#main h3,h5 {
+     color:cadetblue;
+    font-size: 1.3em;
+    font-family: fantasy;
+}
 #index_intro {
     padding: 3em;
     border: darkseagreen;
+
 }
 
 #wrapper {
@@ -140,7 +146,6 @@ strong {
     overflow: hidden;
     border-bottom: 2px solid teal;
     font-variant: normal;
-    text-spacing: space-end;
     font-size: 1.3em; /*font-family: Georgia, "Palatino Linotype", "Times New Roman", serif; */
 }
 
@@ -156,7 +161,7 @@ strong {
 #navigation ul li a {
     display: inline-table;
     padding: 5px 10px 5px;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
 }
 
 #navigation ul li a:link, #navigation ul li a:visited {
@@ -169,8 +174,8 @@ strong {
 }
 
 #navigation {
-    float: left;
-    margin-right: 60em;
+    
+    margin-right: 30em;
 }
 
 #navigation a {
