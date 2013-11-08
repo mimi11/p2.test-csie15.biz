@@ -1,6 +1,5 @@
-<div>
 <?php foreach($posts as $post): ?>
-    <div post="post_index"></div>
+    <div post="post_index">
     <article>
 
        <div id="user_id">
@@ -25,5 +24,4 @@
 
     <div/>
 <?php endforeach; ?>
-</div>
 

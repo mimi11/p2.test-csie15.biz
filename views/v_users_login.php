@@ -1,5 +1,4 @@
-<div>
-    <?php if ($user): ?>
+<?php if ($user): ?>
 
     <p> You are logged in as <?= $user->first_name ?> <?= $user->last_name ?> </p>
     <p> Check out your profile <a href='/users/profile'> here</a> Or Follow the Chatters community
@@ -48,4 +47,3 @@
 
 
 <?php endif; ?>
-</div>

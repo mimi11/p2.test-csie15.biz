@@ -1,4 +1,4 @@
-<p> It starts with new Chatter....</p>
+<h5>It starts with a new Chatter....</h5>
 
 <form method='POST' action='/posts/p_add'>
 
