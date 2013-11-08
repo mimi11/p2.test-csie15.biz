@@ -1,5 +1,6 @@
+<div class="index_intro">
 <?php if ($user): ?>
-    <div class="index_intro">
+
 
 
 
@@ -19,9 +20,6 @@
 <?php else: ?>
 
 
-
-
-
         <h3>The hangout place for busy professionals.</h3>
         <br>Never miss out again on that latest news from missing your children school event,
         <br>or parent meeting,or that work after-party u couldn't go to, and or the fund-raiser
@@ -36,7 +34,6 @@
     <br>
 
 
-    </div><!--end of intro div-->
-
 <?php endif; ?>
 
+</div> <!--end of index_intro-->
