@@ -1,11 +1,11 @@
-<h1>Your Info</h1>
+Your Info
 
 <div>
     <img src="/users/avatar" alt="user_avatar">
 <br>
 <br>
 
-<p>First Name: <?= $user->first_name ?></p>
+ <p>First Name: <?= $user->first_name ?></p>
     <br>
 <p>Last Name: <?= $user->last_name ?></p>
     <br>
@@ -13,6 +13,15 @@
     <br>
     <br>
 <h3>Update your profile picture coming soon features</h3>
+
+
+    <form action="/users/bio_update" method="post"
+          enctype="multipart/form-data">
+        <label for="file">Filename:</label>
+        <input type="file" name="file" id="file"><br>
+        <input type="submit" name="submit" value="Submit">
+    </form>
+
 
 </div>
 

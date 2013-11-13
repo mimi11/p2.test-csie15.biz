@@ -126,7 +126,7 @@ strong {
     text-align: justify;
 }
 
-#profile {
+.profile {
     font-size: 1.2em;
     margin: 5px;
     font-weight: normal;

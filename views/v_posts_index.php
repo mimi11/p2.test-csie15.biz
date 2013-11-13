@@ -1,27 +1,22 @@
+<article>
+
 <?php foreach($posts as $post): ?>
-    <div post="post_index">
-    <article>
 
-       <div id="user_id">
-            <h1><?=$post['first_name']?> <?=$post['last_name']?>&nbsp</h1>
-       </div>
 
-       <div id="post"> <h2>posted on:</h2>
+                <h1><?=$post['first_name']?> <?=$post['last_name']?>&nbsp;</h1>
 
-       </div><br>
 
-       <div id="post_info">
-        <time datetime="<?=Time::display($post['created'],'Y-m-d G:i')?>">
-            <?=Time::display($post['created'])?>
-        </time>
-       </div><br>
+                <br>
 
-       <div= "post_content">
-        <p><br><?=$post['content']?></p>
+                <time class="post_time" datetime="<?=Time::display($post['created'],'Y-m-d H:i')?>">
+                <?=Time::display($post['created'])?>
+                </time>
 
-       </div>
-    </article>
+                 <br>
 
-    <div/>
+                <p><br><?=$post['content']?></p>
+                <br>
+
+
 <?php endforeach; ?>
-
+</article>

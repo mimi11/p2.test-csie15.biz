@@ -228,13 +228,25 @@ class users_controller extends base_controller
 
     public function avatar()
     {
+//get the name of the file from the db select image where user -.this user.id
 
-        require(APP_PATH . "/libraries/Image.php");
-        $imageObj = new Image('http://duplexchick.com/files/2011/07/web-dc-avatar1-300x300.jpg');
 
-        $imageObj->resize(100, 100);
-
+      require(APP_PATH . "/libraries/Image.php");
+       $imageObj = new Image(APP_PATH . '/uploads/avatars/29.jpg');
         $imageObj->display();
+
+      //  $imageObj->resize(100, 100);
+
+
+
+        //
+
+
+       // $im = @imagecreatefromjpeg(APP_PATH . '/uploads/avatars/29.jpg');
+
+        //header('Content-Type: image/jpeg');
+        //imagejpeg($im);
+        die();
     }
 
     public function logout()
@@ -308,9 +320,7 @@ class users_controller extends base_controller
 
     }
 
-    /*-------------------------------------------------------------------------------------------------
 
-    Some difficulties with displaying stored pictures/ uploading is working
         public function bio_update(){
             // if user specified a new image file, upload it
             if ($_FILES['file']['error'] == 0)
@@ -329,9 +339,10 @@ class users_controller extends base_controller
                     DB::instance(DB_NAME)->update("users", $data, "WHERE user_id = ".$this->user->user_id);
 
                     // resize the image
-                    $imgObj = new Image($_SERVER["DOCUMENT_ROOT"]. '/uploads/avatars/' . $image);
-                    $imgObj->resize(100,100, "crop");
-                    $imgObj->save_image($_SERVER["DOCUMENT_ROOT"]. '/uploads/avatars/' . $image);
+                    $image = new Image($_SERVER["DOCUMENT_ROOT"]. '/uploads/avatars/' . $image);
+                    $image->resize(100,100, "crop");
+                    $image->save_image($_SERVER["DOCUMENT_ROOT"]. '/uploads/avatars/' . $image);
+
 
                 }
 
@@ -348,7 +359,6 @@ class users_controller extends base_controller
         }
 
 
-    -------------------------------------------------------------------------------------------------*/
 
     public function profile()
     {
@@ -358,6 +368,9 @@ class users_controller extends base_controller
         if (!$this->user) {
             Router::redirect('/users/login');
         }
+
+
+        $this->template->title = "Profile";
 
         # If they weren't redirected away, continue:
 
